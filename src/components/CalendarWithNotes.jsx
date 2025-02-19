@@ -1,6 +1,6 @@
 // CalendarWithNotes.jsx
 import React, { useState, useEffect } from "react";
-import notesData from "./notes.json"; // Завантаження даних нотаток
+import notesData from "../data/notes.json"; // Завантаження даних нотаток
 
 const CalendarWithNotes = () => {
   const [notes, setNotes] = useState([]); // Нотатки з файлу
@@ -166,7 +166,6 @@ const CalendarWithNotes = () => {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Календар із нотатками</h1>
       <div style={{ marginBottom: "10px" }}>
         <button onClick={() => changeView("month")}>Місяць</button>
         <button onClick={() => changeView("week")}>Тиждень</button>
