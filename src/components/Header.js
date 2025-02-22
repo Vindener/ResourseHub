@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const pageData = {
@@ -18,14 +18,22 @@ const Header = () => {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
 
-  const isAuthenticated = !!token;
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     navigate("/login");
   };
 
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      }
+  }, []);
+
+  const isAuthenticated = !!user;
+  
   return (
     <>
       {/* Верхній хедер */}
@@ -48,12 +56,15 @@ const Header = () => {
       >
         <h2 style={{ margin: 0 }}>{pageTitle}</h2>
         {isAuthenticated ? (
-          <button
-            onClick={handleLogout}
-            style={{ padding: "8px 15px", cursor: "pointer" }}
-          >
-            Вийти
-          </button>
+          <>
+            <h2>{user ? `Вітаємо, ${user.username}!` : "Ласкаво просимо!"}</h2>
+            <button
+              onClick={handleLogout}
+              style={{ padding: "8px 15px", cursor: "pointer" }}
+            >
+              Вийти
+            </button>
+          </>
         ) : (
           <button
             onClick={() => navigate("/login")}

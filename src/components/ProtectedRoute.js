@@ -1,12 +1,11 @@
 import { Navigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../pages/Login/AuthContext";
 
-const ProtectedRoute = ({ children, requiredRole }) => {
-  const { user } = useContext(AuthContext);
+const ProtectedRoute = ({ children }) => {
+  const user = JSON.parse(localStorage.getItem("user")); // Отримуємо дані з локального сховища
 
-  if (!user) return <Navigate to="/login" />;
-  if (requiredRole && user.role !== requiredRole) return <Navigate to="/" />;
+  if (!user) {
+    return <Navigate to="/login" replace />;
+  }
 
   return children;
 };

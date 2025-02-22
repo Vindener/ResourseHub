@@ -6,10 +6,13 @@ import TimeManagementTips from "./components/TimeManagementTips";
 import RelaxationPage from "./components/RelaxationPage";
 import PomodoroTimer from "./components/PomodoroTimer";
 
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 import HomePage from "./pages/HomePage";
 
 import Header  from "./components/Header";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -17,7 +20,9 @@ function App() {
       <Header /> 
       <div style={{ marginLeft: "220px", marginTop: "60px", padding: "20px", width:"80%", backgroundColor:"var(--background-color)", }}>
         <Routes >
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
           <Route path="/notes" element={<Notes />} />
           <Route path="/account" element={<PersonalAccount />} />
           <Route path="/tips" element={<TimeManagementTips />} />
