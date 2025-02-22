@@ -85,7 +85,7 @@ const Notes = () => {
               <h3>{note.title}</h3>
               <p>{note.content}</p>
               <p>
-                <strong>Хештеги:</strong> {note.hashtags.join(", ")}
+                <strong>Мітки:</strong> {note.hashtags.join(", ")}
               </p>
               <button
                 onClick={() => handleEdit(note)}

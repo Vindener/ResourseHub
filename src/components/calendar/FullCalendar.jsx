@@ -1,15 +1,32 @@
 // CalendarWithNotes.jsx
 import React, { useState, useEffect } from "react";
-import notesData from "../data/notes.json"; // Завантаження даних нотаток
+import notesData from "../../data/notes.json"; // Завантаження даних нотаток
 
 const CalendarWithNotes = () => {
   const [notes, setNotes] = useState([]); // Нотатки з файлу
   const [view, setView] = useState("month"); // Тип перегляду: місяць, тиждень, день
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [modalNote, setModalNote] = useState(null); // Нотатка для модального вікна
   const [editingNote, setEditingNote] = useState(null); // Нотатка для редагування
   const [showAddNoteModal, setShowAddNoteModal] = useState(false); // Додавання нотатки
   const [newNote, setNewNote] = useState({ title: "", description: "", resources: 0 });
+
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const today = new Date(); 
+
+  const daysOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
+  
+  const firstDayOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+  const daysInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();
+  const firstDayIndex = (firstDayOfMonth.getDay() + 6) % 7;
+
+  const handleNavigate = (direction) => {
+    setSelectedDate(new Date(selectedDate.getFullYear(), selectedDate.getMonth() + direction, 1));
+  };
+
+  const handleSelectToday = () => {
+    setSelectedDate(new Date());
+  };
+
 
   useEffect(() => {
     // Імітація завантаження даних з JSON
@@ -59,40 +76,52 @@ const CalendarWithNotes = () => {
 
   // Генерація перегляду місяця
   const renderMonthView = () => {
-    const today = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
+    const today = new Date(); 
     const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
 
     return (
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "10px" }}>
-        {[...Array(daysInMonth)].map((_, index) => {
-          const date = new Date(today.getFullYear(), today.getMonth(), index + 1);
+      <div style={{ textAlign: "center", padding: "20px" }}>
+      <div>
+        <button onClick={() => handleNavigate(-1)}>⟵</button>
+        <strong style={{ margin: "0 15px", fontSize: "1.2em" }}>
+          {selectedDate.toLocaleString("uk-UA", { month: "long", year: "numeric" })}
+        </strong>
+        <button onClick={() => handleNavigate(1)}>⟶</button>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", marginTop: "10px" }}>
+        {daysOfWeek.map((day) => (
+          <div key={day} style={{ fontWeight: "bold" }}>{day}</div>
+        ))}
+        {[...Array(firstDayIndex)].map((_, i) => (
+          <div key={"empty-" + i}></div>
+        ))}
+        {[...Array(daysInMonth)].map((_, i) => {
+          const day = i + 1;
+          const isToday =
+            day === today.getDate() &&
+            today.getMonth() === selectedDate.getMonth() &&
+            today.getFullYear() === selectedDate.getFullYear();
           return (
             <div
-              key={index}
-              onClick={() => {
-                if (getNotesForDate(date).length === 0) {
-                  setShowAddNoteModal(true);
-                  setSelectedDate(date);
-                } else {
-                  setSelectedDate(date);
-                }
-              }}
+              key={day}
               style={{
                 padding: "10px",
-                border: "1px solid #ccc",
                 borderRadius: "4px",
-                cursor: "pointer",
                 textAlign: "center",
-                backgroundColor: getNotesForDate(date).length > 0 ? "#f0f8ff" : "#fff",
+                backgroundColor: isToday ? "blue" : "white",
+                color: isToday ? "white" : "black",
+                cursor: "pointer",
               }}
             >
-              <div>{index + 1}</div>
-              <div style={{ fontSize: "10px", color: "gray" }}>{getDayName(date)}</div>
-              <div style={{ fontSize: "12px", marginTop: "5px" }}>{renderDayNotes(date)}</div>
+              {day}
             </div>
           );
         })}
       </div>
+      <button onClick={handleSelectToday} style={{ marginTop: "10px", padding: "5px 10px" }}>
+        Вибрати поточний день
+      </button>
+    </div>
     );
   };
 
