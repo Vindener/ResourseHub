@@ -8,7 +8,7 @@ const CalendarWithNotes = () => {
   const [newNote, setNewNote] = useState({ title: "", description: "", resources: "" });
   const today = new Date();
 
-  const daysOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Нд"];
+  const daysOfWeek = ["П", "В", "С", "Ч", "П", "С", "Н"];
   
   const firstDayOfMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), 1);
   const daysInMonth = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0).getDate();

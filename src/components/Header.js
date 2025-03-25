@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const pageData = {
   "/": { title: "Головна", icon: "home.png" },
-  "/other-gurt": { title: "Календар", icon: "home.png" },
+  "/calendar": { title: "Календар", icon: "home.png" },
   "/notes": { title: "Нотатник", icon: "acts.png" },
   "/new": { title: "Тамагочі", icon: "settle.png" },
   "/tips": { title: "Селфхелп", icon: "transfer.png" },
@@ -17,10 +17,13 @@ const Header = () => {
 
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
+  const user_ = localStorage.getItem("user");
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("user");
+    window.location.reload(); 
     navigate("/login");
   };
 
@@ -33,7 +36,7 @@ const Header = () => {
   }, []);
 
   const isAuthenticated = !!user;
-  
+
   return (
     <>
       {/* Верхній хедер */}

@@ -1,0 +1,62 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 8px 8px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "progress-today tamagochi calendar"
+        "spons spons calendar"
+        "fast-actions fast-actions today";
+    height: 100%;
+    margin: 0;
+}
+
+.calendar-block {
+    grid-area: calendar;
+    width: 380px;
+    background-color:#FFFAED;
+    margin-bottom:20px;
+    border-radius: 12px;
+}
+
+.today-block {
+    grid-area: today;
+    width: 380px;
+    border-radius: 12px;
+    background-color:#FFFAED;
+    padding: 12px;
+}
+
+.progress-today-block {
+    grid-area: progress-today;
+    background-color: #CBA8E1;
+    margin: 20px;
+    width:320px;
+    height:140px;
+    border-radius:30px;
+    padding:20px;
+}
+
+.tamagochi-block {
+    grid-area: tamagochi;
+    background-color: #BFE0A5;
+    margin: 20px;
+    width: 320px;
+    height: 140px;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.spoons-block {
+    grid-area: spons;
+    background-color:#F6D868;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.fast-actions-block {
+    grid-area: fast-actions;
+    padding: 18px;
+}
