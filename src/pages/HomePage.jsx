@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import notesData from "../data/notes.json"; // Завантаження даних нотаток
 import CalendarWithNotes from "../components/calendar/CalendarForHome";
 import "./Test.css"
+import PlanList from "../components/Plan/PlanList"
 
 const HomePage = () => {
     const [user, setUser] = useState(null);
@@ -20,9 +21,7 @@ const HomePage = () => {
                     <CalendarWithNotes />
                 </div>
                 <div class="today-block">
-                    <div>
-                        Сьогодні тут буде компонент з справами
-                    </div>
+                        <PlanList />
                 </div>
                 <div class="progress-today-block">
                     <div >

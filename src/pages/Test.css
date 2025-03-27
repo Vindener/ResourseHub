@@ -23,10 +23,10 @@
 
 .today-block {
     grid-area: today;
-    width: 380px;
-    border-radius: 12px;
+    width: 364px;
+    border-radius: 30px;
     background-color:#FFFAED;
-    padding: 12px;
+    padding: 16px;
 }
 
 .progress-today-block {
