@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Calendar.css";
 import WeeklyCalendar from "./WeeklyCalendar";
+import AddEventPage from "../Events/AddEventPage";
 
 const CalendarWithNotes = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -113,6 +114,8 @@ const CalendarWithNotes = () => {
       </div>
 
       <WeeklyCalendar/>
+
+      <AddEventPage/>
     </div>
   );
 };
