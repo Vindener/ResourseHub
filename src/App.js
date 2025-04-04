@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import PersonalAccount from "./components/PersonalAccount";
-import Notes from "./components/Notes";
+import Notes from "./components/Notes/Notes";
 import TimeManagementTips from "./components/TimeManagementTips";
 import RelaxationPage from "./components/RelaxationPage";
 import PomodoroTimer from "./components/PomodoroTimer";
