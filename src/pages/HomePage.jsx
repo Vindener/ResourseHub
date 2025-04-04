@@ -3,6 +3,7 @@ import notesData from "../data/notes.json"; // Завантаження дани
 import CalendarWithNotes from "../components/calendar/CalendarForHome";
 import "./Test.css"
 import PlanList from "../components/Plan/PlanList"
+import WeeklyProgress from "../components/Plan/WeeklyProgress"
 
 const HomePage = () => {
     const [user, setUser] = useState(null);
@@ -24,10 +25,11 @@ const HomePage = () => {
                         <PlanList />
                 </div>
                 <div class="progress-today-block">
-                    <div >
+                    <WeeklyProgress/>
+                    {/* <div >
                         Прогрес виконання справ на тиждень
                     </div>
-                    <p>Молодець! Так тримати!</p>
+                    <p>Молодець! Так тримати!</p> */}
                 </div>
                 <div class="tamagochi-block"> 
                     <div>

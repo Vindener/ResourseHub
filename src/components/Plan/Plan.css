@@ -69,3 +69,44 @@
     align-items: center;
     margin-bottom: 8px;
 }
+.weekly-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.weekly-title{
+    font-weight: 700;
+    font-size: 16px;
+    text-align: center;
+    color: #554560;
+}
+.weekly-progress{
+    font-weight: 700;
+    font-size: 24px;
+    font-variant: small-caps;
+    text-align: center;
+    color: #554560;
+}
+.weekly-text{
+    font-weight: 500;
+    font-size: 12px;
+    font-variant: small-caps;
+    text-align: center;
+    color: #554560;
+}
+.chart-wrapper {
+    position: relative;
+    width: 95px;
+    height: 95px;
+}
+
+.chart-center-text {
+    position: absolute;
+    top: 55%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+    font-size: 16px;
+    color: #4D2C91;
+}

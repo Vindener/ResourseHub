@@ -16,13 +16,24 @@
     const [newTagName, setNewTagName] = useState("");
     const [newTagColor, setNewTagColor] = useState("#FFD700"); // Жовтий за замовчуванням
 
-    useEffect(() => {
-      fetchNotes();
-      fetchTags();
+    const [user, setUser] = useState(null);
+
+  useEffect(() => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
     }, []);
 
+    useEffect(() => {
+      if (user?.id) {
+      fetchNotes();
+      fetchTags();
+      }
+    }, [user]);
+
     const fetchNotes = async () => {
-    const res = await axios.get(`http://localhost:5000/notes?user_id=4`);
+    const res = await axios.get(`http://localhost:5000/notes?user_id=${user.id}`);
     const notesData = res.data;
 
     const notesWithTags = await Promise.all(
@@ -39,7 +50,7 @@
 
 
     const fetchTags = async () => {
-    const res = await axios.get(`http://localhost:5000/tags?user_id=4`);
+    const res = await axios.get(`http://localhost:5000/tags?user_id=${user.id}`);
     setTags(res.data); // Тепер кожна мітка містить id, name і color
   };
 
@@ -80,7 +91,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
       await axios.post(`http://localhost:5000/notes`, { 
         title: newNote.title.trim() || "", 
         content: newNote.content.trim(), 
-        user_id: 4 
+        user_id: user.id
       });
       fetchNotes();
       setNewNote({ title: "", content: "" });
@@ -134,7 +145,7 @@ const [isModalOpen, setIsModalOpen] = useState(false);
 
     try {
       const res = await axios.post("http://localhost:5000/tags", {
-        user_id: 4,
+        user_id: user.id,
         name: tagName,
         color: newTagColor, // Використовуємо обраний колір
       });
@@ -494,11 +505,13 @@ useEffect(() => {
           <div className="modal-content" ref={editModalRef}>
           <input
             type="text"
+            className="modal-input"
             placeholder="Назва.."
             value={newNote.title}
             onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}
           />
           <textarea
+            className="modal-input"
             placeholder="Почніть введення"
             value={newNote.content}
             onChange={(e) => setNewNote({ ...newNote, content: e.target.value })}
