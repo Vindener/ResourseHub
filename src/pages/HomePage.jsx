@@ -4,6 +4,7 @@ import CalendarWithNotes from "../components/calendar/CalendarForHome";
 import "./Test.css"
 import PlanList from "../components/Plan/PlanList"
 import WeeklyProgress from "../components/Plan/WeeklyProgress"
+import SpoonSystem from "../components/Spoon/SpoonSystem"
 
 const HomePage = () => {
     const [user, setUser] = useState(null);
@@ -37,10 +38,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <div class="spoons-block">
-                    <p>
-                         На скільки ложок ви сьогодні себе відчуваєте?
-                    </p>
-                    <progress max="100" value="70" style={{width:"90%"}}/>
+                    <SpoonSystem/>
                     <p>
                         Вдалого дня! Не забудьте відпочити ще сьогодні)
                     </p>

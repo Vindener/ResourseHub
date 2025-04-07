@@ -1,0 +1,93 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./SpoonSystem.css";
+
+const SpoonSystem = () => {
+  const [spoons, setSpoons] = useState(5);
+  const [user, setUser] = useState(null);
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [alreadySetToday, setAlreadySetToday] = useState(false);
+  const [dbSpoons, setDbSpoons] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!user) return;
+
+    const fetchSpoons = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/spoons/${user.id}`);
+        const { spoons, last_spoons_update } = res.data;
+
+        setDbSpoons(spoons);
+
+        if (last_spoons_update) {
+          const today = new Date().toISOString().split("T")[0];
+          const updatedDate = new Date(last_spoons_update).toISOString().split("T")[0];
+          setAlreadySetToday(today === updatedDate);
+        }
+      } catch (error) {
+        console.error("Помилка завантаження ложок:", error);
+      }
+    };
+
+    fetchSpoons();
+  }, [user]);
+  
+
+  const handleSpoonChange = (event) => {
+    setSpoons(event.target.value);
+  };
+
+
+
+   const handleSubmit = async () => {
+    if (!user) return;
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/spoons", {
+        userId: user.id,
+        spoons: Number(spoons),
+      });
+      console.log(res.data.message);
+      setSubmitted(true);
+      setAlreadySetToday(true);
+      setDbSpoons(Number(spoons));
+    } catch (error) {
+      alert(error.response?.data?.message || "Помилка при збереженні");
+    }
+  };
+  return (
+    <div className="spoon-container">
+      {alreadySetToday ? (
+        <>
+        <h2>Мої ложки на сьогодні</h2>
+        <p>Кількість ложок: <strong>{dbSpoons}</strong> (вже встановлено на сьогодні)</p>
+        </>
+      ) : (
+        <>
+        <h2>На скільки ложок ви сьогодні себе відчуваєте?</h2>
+        <input
+          type="range"
+          min="1"
+          max="14"
+          value={spoons}
+          onChange={handleSpoonChange}
+        />
+        <p>{spoons} ложок</p>
+        <button onClick={handleSubmit}>Зберегти</button>
+        {message && <p className="message">{message}</p>}
+      </>
+        
+      )}
+    </div>
+  );
+};
+
+export default SpoonSystem;
