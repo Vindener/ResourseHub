@@ -231,30 +231,27 @@ const [isModalOpen, setIsModalOpen] = useState(false);
 
 
   const removeTagFromNote = async (tag) => {
-    if (!modalNote) return;
+  if (!modalNote) return;
 
-    try {
-      // Знаходимо id мітки
-      const tagObj = tags.find((t) => t.name === tag);
-      if (!tagObj) return;
+  try {
+    await axios.delete("http://localhost:5000/note_tags", {
+      data: { note_id: modalNote.id, tag_id: tag.id },
+    });
 
-      await axios.delete("http://localhost:5000/note_tags", {
-        data: { note_id: modalNote.id, tag_id: tagObj.id },
-      });
+    // Оновлюємо локальний стан
+    setModalNote((prev) => ({
+      ...prev,
+      tags: prev.tags.filter((t) => t.id !== tag.id),
+    }));
 
-      // Оновлюємо локальний стан
-      setModalNote((prev) => ({
-        ...prev,
-        tags: prev.tags.filter((t) => t !== tag),
-      }));
+    fetchNotes();
+    fetchTags();
+  } catch (error) {
+    console.error("Помилка при видаленні мітки:", error);
+  }
+};
 
-      // Оновлюємо список заміток та міток
-      fetchNotes();
-      fetchTags();
-    } catch (error) {
-      console.error("Помилка при видаленні мітки:", error);
-    }
-  };
+
 
 
   const addExistingTagToNote = async (tagId) => {
@@ -436,7 +433,7 @@ useEffect(() => {
                           {tag.name}
                         </span>
                       )}
-                        <svg onClick={() => removeTagFromNote(tag.id)} width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg key={tag.id} onClick={() => removeTagFromNote(tag)} width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M5.16663 14.5C4.79996 14.5 4.48618 14.3696 4.22529 14.1087C3.9644 13.8478 3.83374 13.5338 3.83329 13.1667V4.5H3.16663V3.16667H6.49996V2.5H10.5V3.16667H13.8333V4.5H13.1666V13.1667C13.1666 13.5333 13.0362 13.8473 12.7753 14.1087C12.5144 14.37 12.2004 14.5004 11.8333 14.5H5.16663ZM6.49996 11.8333H7.83329V5.83333H6.49996V11.8333ZM9.16663 11.8333H10.5V5.83333H9.16663V11.8333Z" fill="#554560" />
                         </svg>
                     </span>

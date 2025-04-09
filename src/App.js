@@ -10,7 +10,12 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 
 import HomePage from "./pages/HomePage";
-import Calendar from "./components/calendar/Calendar";
+import Calendar from "./pages/Calendar";
+import AddEvent from "./components/Events/EventForm";
+import DayViewWrapper from "./components/calendar/DayViewWrapper";
+import EventEditPage from "./components/Events/EventEditPage";
+import NewEventPage from "./components/Events/NewEventPage";
+
 
 import Header  from "./components/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -43,6 +48,10 @@ return (
           <Route path="/register" element={<RegisterPage />} />
 
           <Route path="/calendar" element={<Calendar />} />
+          <Route path="/calendar/new" element={<AddEvent />} />
+          <Route path="/calendar/day/:date" element={<DayViewWrapper />} />
+          <Route path="/calendar/edit/:id" element={<EventEditPage />} />
+          <Route path="/calendar/new" element={<NewEventPage />} />
 
           <Route path="/notes" element={<Notes />} />
           <Route path="/account" element={<PersonalAccount />} />

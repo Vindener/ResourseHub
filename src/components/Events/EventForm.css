@@ -1,0 +1,133 @@
+/* EventForm.css */
+
+.event-form-container {
+    background: #fff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: "Segoe UI", sans-serif;
+}
+
+.event-form-date-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.event-form-date {
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+    margin: 0;
+}
+
+.nav-arrow {
+    font-size: 20px;
+    padding: 4px 12px;
+    background: #5c4c65;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-arrow:hover:not(:disabled) {
+    background-color: #dcdcdc;
+}
+
+.nav-arrow:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.event-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.event-form label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.event-form input,
+.event-form select {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.recurrence-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.recurrence-row label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    background-color: #f3f3f3;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.recurrence-row input[type="radio"] {
+    accent-color: #444;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.save-button,
+.cancel-button {
+    padding: 10px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.save-button {
+    background-color: #000;
+    color: #fff;
+}
+
+.save-button:hover {
+    background-color: #222;
+}
+
+.cancel-button {
+    background-color: #6e5a7a;
+    color: #fff;
+}
+
+.cancel-button:hover {
+    background-color: #5c4c65;
+}

@@ -16,6 +16,7 @@
 .calendar-block {
     grid-area: calendar;
     width: 380px;
+    height: 380px;
     background-color:#FFFAED;
     margin-bottom:20px;
     border-radius: 12px;

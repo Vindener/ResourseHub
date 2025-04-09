@@ -1,0 +1,75 @@
+.month-view-container {
+    width: 100%;
+    background-color: #fefdf8;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+/* Заголовки днів тижня */
+.days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.week-day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 6px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+/* Сітка днів місяця */
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-day {
+    min-height: 90px;
+    background-color: #fff;
+    border: 1px solid #ececec;
+    border-radius: 4px;
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.calendar-day:hover {
+    background-color: #e8f0fe;
+}
+
+.calendar-day.today {
+    background-color: #e0ecff;
+}
+
+.calendar-day.empty {
+    background-color: transparent;
+    border: none;
+    cursor: default;
+}
+
+/* Номер дня */
+.day-number {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* Події, які відображаються у клітинці дня */
+.calendar-event-marker {
+    background-color: #1976d2;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 4px;
+    margin: 2px 0;
+    border-radius: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}

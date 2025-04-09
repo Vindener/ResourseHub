@@ -1,0 +1,209 @@
+/* Головний контейнер календаря */
+.calendar-root {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fefdf8;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: sans-serif;
+}
+
+/* Кнопки перемикання (день, тиждень, місяць) */
+.calendar-view-switch {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.calendar-view-switch button {
+    padding: 6px 12px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.calendar-view-switch button.active {
+    background-color: #1976d2;
+    color: #fff;
+}
+
+/* Шапка з кнопками навігації */
+.calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+/* Кнопки "Додати подію" */
+.calendar-add-event {
+    margin-bottom: 10px;
+}
+
+.calendar-add-event button {
+    margin-right: 10px;
+    padding: 6px 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #1976d2;
+    color: #fff;
+}
+
+/* ============ МІСЯЧНИЙ ВИГЛЯД ============ */
+.calendar-month-view {
+    width: 100%;
+}
+
+.days-of-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
+.week-day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 6px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-day {
+    min-height: 90px;
+    background-color: #fff;
+    border: 1px solid #ececec;
+    border-radius: 4px;
+    padding: 4px;
+    position: relative;
+    cursor: pointer;
+}
+
+.calendar-day.today {
+    background-color: #e0ecff;
+}
+
+.calendar-day.empty {
+    background-color: transparent;
+    border: none;
+    cursor: default;
+}
+
+/* Номер дня */
+.day-number {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* Події (коротка позначка в клітинці) */
+.calendar-event-marker {
+    background-color: #1976d2;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    padding: 2px 4px;
+    margin-bottom: 2px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* ============ ТИЖНЕВИЙ ВИГЛЯД ============ */
+.calendar-week-view {
+    width: 100%;
+}
+
+.week-days-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.week-day-cell {
+    min-height: 100px;
+    background-color: #fff;
+    border: 1px solid #ececec;
+    border-radius: 4px;
+    padding: 4px;
+    position: relative;
+}
+
+.week-day-cell.today {
+    background-color: #e0ecff;
+}
+
+.week-day-label {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* ============ ДЕННИЙ ВИГЛЯД ============ */
+.calendar-day-view {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    min-height: 150px;
+}
+
+.calendar-day-view .calendar-event-marker {
+    display: block;
+    margin: 4px 0;
+    font-size: 0.9rem;
+}
+
+/* ============ ФОРМА ДОДАВАННЯ ПОДІЇ ============ */
+.add-event-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.add-event-container h2 {
+    margin-bottom: 16px;
+}
+
+.add-event-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.add-event-form input,
+.add-event-form select {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin-top: 4px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.form-buttons button {
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #1976d2;
+    color: #fff;
+}
