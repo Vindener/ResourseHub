@@ -1,31 +1,108 @@
-.spoon-container {
-    background: #f9de80;
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-}
-
-input[type="range"] {
-    width: 80%;
-    margin: 10px 0;
-}
-
-button {
-    background: #4d2c91;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #3b2170;
-}
 
 .message {
     margin-top: 10px;
     font-weight: bold;
+}
+
+/* Контейнер у жовтих тонах */
+.spoon-container {
+    background: #f6d868;
+    /* Фон, схожий на приклад */
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    width: 94%;
+    max-width: 600px;
+    /* Обмеження ширини для кращої читабельності */
+    margin: 0 auto;
+    /* Вирівнювання по центру */
+}
+
+/* Блок із самим слайдером і підписами */
+.range-container {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Слайдер (основна доріжка в Chrome) */
+input[type="range"] {
+    -webkit-appearance: none;
+    /* Прибираємо дефолтні стилі */
+    width: 100%;
+    height: 8px;
+    /* Висота доріжки */
+    outline: none;
+    border-radius: 8px;
+    margin: 20px 0 10px 0;
+    /* Верхній/нижній відступи */
+    background: #d6bf76;
+    /* Базовий колір доріжки (fallback) */
+}
+
+/* Слайдер: доріжка у Firefox (не показує заповнену частину, якщо не налаштовано ::-moz-range-progress) */
+input[type="range"]::-moz-range-track {
+    background: transparent;
+    height: 8px;
+    border-radius: 8px;
+}
+
+/* Заповнена частина у Firefox (ліворуч від повзунка) */
+input[type="range"]::-moz-range-progress {
+    background-color: #4d2c91;
+    height: 8px;
+    border-radius: 8px;
+}
+
+/* Повзунок (thumb) - WebKit (Chrome/Safari/Edge) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: url("/public/images/Spoon.png") no-repeat center center;
+    /* Іконка ложки */
+    background-size: contain;
+    width: 32px;
+    /* Розмір повзунка */
+    height: 32px;
+    cursor: pointer;
+    margin-top: -12px;
+    /* Вирівнювання повзунка по центру доріжки */
+}
+
+/* Повзунок (thumb) - Firefox */
+input[type="range"]::-moz-range-thumb {
+    background: url("/public/images/Spoon.png") no-repeat center center;
+    background-size: contain;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border: none;
+}
+
+/* Цифри під слайдером */
+.tickmarks {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #6a5c33;
+    /* Темно-коричневий колір підписів */
+    margin: 0 3px;
+}
+
+.tickmarks span {
+    flex: 1;
+    text-align: center;
+}
+
+.spoons-title{
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    color: #776935;
+}
+.spoons-subtitle{
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    color: #776935;
 }

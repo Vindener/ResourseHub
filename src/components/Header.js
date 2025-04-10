@@ -87,7 +87,7 @@ const Header = () => {
             top: 0,
             width: "215px",
             height: "100vh",
-            backgroundColor: "var(--main-color-1)",
+            backgroundColor: "#121212",
             borderRight: "1px solid #ddd",
             padding: "10px",
             display: "flex",
@@ -103,6 +103,7 @@ const Header = () => {
                 padding: "8px",
                 textDecoration: "none",
                 borderRadius: "15px",
+                color:"#FAF4E4"
               }}
             >
               {/* <img
@@ -125,7 +126,7 @@ const Header = () => {
                   display: "flex",
                   alignItems: "center",
                   textDecoration: "none",
-                  color: location.pathname === path ? "#FFFFFF" : "black",
+                  color: location.pathname === path ? "#FAF4E4" : "#FAF4E4",
                   fontWeight: location.pathname === path ? "bold" : "normal",
                   backgroundColor: location.pathname === path ? "#8AAEE0" : "transparent",
                   borderRadius: "5px",
@@ -137,7 +138,7 @@ const Header = () => {
                 onMouseOut={(e) => {
                   e.target.style.backgroundColor =
                     location.pathname === path ? "#8AAEE0" : "transparent";
-                  e.target.style.color = location.pathname === path ? "#FFFFFF" : "black";
+                  e.target.style.color = location.pathname === path ? "#FAF4E4" : "#FAF4E4";
                 }}
               >
                 {/* <img

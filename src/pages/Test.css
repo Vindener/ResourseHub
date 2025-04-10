@@ -1,64 +1,118 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-auto-rows: 1fr;
-    gap: 8px 8px;
-    grid-auto-flow: row;
+    gap: 16px;
     grid-template-areas:
         "progress-today tamagochi calendar"
-        "spons spons calendar"
+        "spoons spoons calendar"
         "fast-actions fast-actions today";
-    height: 100%;
-    margin: 0;
+    padding: 20px;
+    background: #fffaf0;
 }
-
-.calendar-block {
-    grid-area: calendar;
-    width: 380px;
-    height: 380px;
-    background-color:#FFFAED;
-    margin-bottom:20px;
-    border-radius: 12px;
-}
-
-.today-block {
-    grid-area: today;
-    width: 364px;
-    border-radius: 30px;
-    background-color:#FFFAED;
-    padding: 16px;
-}
-
 .progress-today-block {
     grid-area: progress-today;
-    background-color: #CBA8E1;
-    margin: 20px;
-    width:320px;
-    height:140px;
-    border-radius:30px;
-    padding:20px;
+    background-color: #cba8e1;
+    padding: 20px;
+    border-radius: 20px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
 }
 
+.progress-text {
+    margin-left: 16px;
+}/* Тамагочі */
 .tamagochi-block {
     grid-area: tamagochi;
-    background-color: #BFE0A5;
-    margin: 20px;
-    width: 320px;
-    height: 140px;
-    border-radius: 30px;
+    background-color: #bfe0a5;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+}
+
+.status {
+    background: #7ec857;
+    color: white;
+    display: inline-block;
+    padding: 4px 12px;
+    margin-top: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Календар */
+.calendar-block {
+    grid-area: calendar;
+    background-color: #fffaf0;
+    padding: 16px;
+    border-radius: 20px;
+}
+
+/* Ложки */
+.spoons-block {
+    grid-area: spoons;
+    background-color: #f6d868;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* План */
+.today-block {
+    grid-area: today;
+    background-color: #fffaf0;
+    padding: 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Швидкі дії */
+.fast-actions-block {
+    grid-area: fast-actions;
     padding: 20px;
 }
 
-.spoons-block {
-    grid-area: spons;
-    background-color:#F6D868;
-    border-radius: 12px;
-    padding: 12px;
+.quick-actions {
+    display: flex;
+    gap: 20px;
+    margin-top: 12px;
 }
 
-.fast-actions-block {
-    grid-area: fast-actions;
-    padding: 18px;
+.quick-card {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    padding: 16px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: 0.2s ease;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    width: 235px;
+}
+
+.quick-card:hover {
+    background: #f0f0f0;
+}
+
+
+button {
+    background: #121212;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgb(97, 95, 89)
 }

@@ -99,10 +99,8 @@ const toggleDone  = (id, updatedFields) => {
         <h2 className="plan-header">{formattedTodayDate}</h2>
       </div>
       <CompactEventList title="Події на сьогодні"/>
-      <PlanSection title="Плани на день" plans={dailyPlans} isAdding={isAdding.day} setIsAdding={() => setIsAdding({ ...isAdding, day: true })} isEditing={isEditing.day} setIsEditing={() => setIsEditing({ ...isEditing, day: !isEditing.day })} newPlan={newPlan} setNewPlan={setNewPlan} addPlan={() => addPlan("day", setDailyPlans)} updatePlan={updatePlan} editedPlans={editedPlans} setEditedPlans={setEditedPlans}  toggleDone={toggleDone} deletePlan={deletePlan} />
-      <PlanSection title="Плани на тиждень" plans={weeklyPlans} isAdding={isAdding.week} setIsAdding={() => setIsAdding({ ...isAdding, week: true })} isEditing={isEditing.week} setIsEditing={() => setIsEditing({ ...isEditing, week: !isEditing.week })} newPlan={newPlan} setNewPlan={setNewPlan} addPlan={() => addPlan("week", setWeeklyPlans)} updatePlan={updatePlan} editedPlans={editedPlans} setEditedPlans={setEditedPlans}  toggleDone={toggleDone} deletePlan={deletePlan} />
-      <PlanSection title="Плани на місяць" plans={monthlyPlans} isAdding={isAdding.month} setIsAdding={() => setIsAdding({ ...isAdding, month: true })} isEditing={isEditing.month} setIsEditing={() => setIsEditing({ ...isEditing, month: !isEditing.month })} newPlan={newPlan} setNewPlan={setNewPlan} addPlan={() => addPlan("month", setMonthlyPlans)} updatePlan={updatePlan} editedPlans={editedPlans} setEditedPlans={setEditedPlans} toggleDone={toggleDone} deletePlan={deletePlan} />
-    </div>
+      <PlanSection title="Плани на сьогодні" plans={dailyPlans} isAdding={isAdding.day} setIsAdding={() => setIsAdding({ ...isAdding, day: true })} isEditing={isEditing.day} setIsEditing={() => setIsEditing({ ...isEditing, day: !isEditing.day })} newPlan={newPlan} setNewPlan={setNewPlan} addPlan={() => addPlan("day", setDailyPlans)} updatePlan={updatePlan} editedPlans={editedPlans} setEditedPlans={setEditedPlans}  toggleDone={toggleDone} deletePlan={deletePlan} />
+   </div>
   );
 };
 

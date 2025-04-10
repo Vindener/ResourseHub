@@ -9,6 +9,7 @@ const SpoonSystem = () => {
   const [submitted, setSubmitted] = useState(false);
   const [alreadySetToday, setAlreadySetToday] = useState(false);
   const [dbSpoons, setDbSpoons] = useState(null);
+  const maxSpoons = 14;
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -45,8 +46,6 @@ const SpoonSystem = () => {
     setSpoons(event.target.value);
   };
 
-
-
    const handleSubmit = async () => {
     if (!user) return;
 
@@ -63,29 +62,49 @@ const SpoonSystem = () => {
       alert(error.response?.data?.message || "Помилка при збереженні");
     }
   };
+
+  // Обчислюємо, наскільки відсотків має бути зафарбовано зліва
+  const fillPercentage = (spoons / 14) * 100;
   return (
     <div className="spoon-container">
       {alreadySetToday ? (
         <>
-        <h2>Мої ложки на сьогодні</h2>
-        <p>Кількість ложок: <strong>{dbSpoons}</strong> (вже встановлено на сьогодні)</p>
+        <h2 className="spoons-title">Мої ложки на сьогодні</h2>
+        <p className="spoons-subtitle">Кількість ложок: <strong>{dbSpoons}</strong> (вже встановлено на сьогодні)</p>
         </>
       ) : (
         <>
-        <h2>На скільки ложок ви сьогодні себе відчуваєте?</h2>
+        <h2 className="spoons-title">На скільки ложок ви сьогодні себе відчуваєте?</h2>
         <input
           type="range"
-          min="1"
+          min="0"
           max="14"
+          step="1"
           value={spoons}
           onChange={handleSpoonChange}
+          style={{
+            /* У Chrome/Safari/Edge використовується фон з градієнтом,
+               який покриває доріжку від 0% до поточного значення. */
+            background: `linear-gradient(to right, 
+                           #776935 0%, 
+                           #776935 ${fillPercentage}%, 
+                           #d6bf76 ${fillPercentage}%, 
+                           #d6bf76 100%)`,
+          }}
         />
-        <p>{spoons} ложок</p>
+        {/* Цифри (позначки) під слайдером */}
+         <div className="tickmarks">
+          {Array.from({ length: maxSpoons + 1 }, (_, i) => (
+            <span key={i}>{i}</span>
+          ))}
+        </div>
+        <p className="spoons-subtitle">{spoons} ложок</p>
         <button onClick={handleSubmit}>Зберегти</button>
         {message && <p className="message">{message}</p>}
       </>
         
       )}
+        <p className="spoons-subtitle">Вдалого дня! Не забудьте відпочити ще сьогодні</p>
     </div>
   );
 };

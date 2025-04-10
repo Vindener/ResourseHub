@@ -1,0 +1,55 @@
+.compact-event-list {
+    background-color: #fdf7ed;
+    border-radius: 20px;
+    padding: 16px;
+    font-family: "Arial", sans-serif;
+}
+
+.compact-event-list h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.compact-event-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.compact-event-list th {
+    text-align: left;
+    font-weight: normal;
+    color: #333;
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+
+.compact-event-list td {
+    padding: 4px 0;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+.compact-event-list tr {
+    cursor: pointer;
+}
+
+.compact-event-list tr:hover .event-chip {
+    background-color: #e1ded6;
+}
+
+.event-chip {
+    background-color: #d7d2c6;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    transition: background 0.2s ease;
+}
+
+.event-icon {
+    margin-right: 6px;
+}
+
+.no-events {
+    font-style: italic;
+    color: #777;
+}

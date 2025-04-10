@@ -5,6 +5,7 @@ import WeekView from "../components/calendar/WeekView";
 import MonthView from "../components/calendar/MonthView";
 import EventForm from "../components/Events/EventForm";
 import "./Calendar.css";
+import PlanList from "../components/Plan/PlanList";
 
 const CalendarWithEvents = () => {
   const [user, setUser] = useState(null);
@@ -80,6 +81,7 @@ const CalendarWithEvents = () => {
   };
 
   return (
+    <>
     <div className="calendar-root">
       {showForm ? (
         <EventForm
@@ -118,6 +120,10 @@ const CalendarWithEvents = () => {
         </>
       )}
     </div>
+    <div>
+        <PlanList />
+    </div>
+    </>
   );
 };
 

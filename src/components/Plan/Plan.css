@@ -31,10 +31,10 @@
     align-items: center;
 }
 .plan-edit{
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border-radius: 12px;    
-    background-color: #B7C8F3;
+    /* background-color: #B7C8F3; */
     cursor: pointer;
     display: flex;
     align-content: center;
