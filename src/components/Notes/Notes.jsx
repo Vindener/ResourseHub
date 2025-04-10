@@ -214,6 +214,23 @@ const Notes = () => {
   };
 
   const filteredNotes = filterNotes();
+  
+  const formatUpdateDate = (updated_at) => {
+  if (!updated_at) return "";
+
+  const updated = new Date(updated_at);
+  const now = new Date();
+
+  const updatedYMD = updated.toDateString();
+  const yesterdayYMD = new Date(new Date().setDate(now.getDate() - 1)).toDateString();
+
+  if (updatedYMD === yesterdayYMD) {
+    return `Вчора, ${updated.toLocaleTimeString("uk-UA", { hour: "2-digit", minute: "2-digit" })}`;
+  }
+
+  return `${updated.toLocaleDateString("uk-UA")}, ${updated.toLocaleTimeString("uk-UA", { hour: "2-digit", minute: "2-digit" })}`;
+};
+
 
   return (
     <div className="notes-container">
@@ -260,30 +277,45 @@ const Notes = () => {
       </header>
 
       <div className="notes-grid">
-        {filteredNotes.map((note) => (
-          <div key={note.id} className="note">
+      {filteredNotes.map((note) => {
+        const updatedAt = new Date(note.updated_at);
+        const now = new Date();
+        const isYesterday = updatedAt.toDateString() === new Date(now.setDate(now.getDate() - 1)).toDateString();
+
+        const formattedUpdate = isYesterday
+          ? `Вчора, ${updatedAt.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' })}`
+          : `${updatedAt.toLocaleDateString('uk-UA')}, ${updatedAt.toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' })}`;
+
+        return (
+          <div key={note.id} className="note" >
             <div className="tags-container" onClick={() => openModal(note)}>
               {(note.tags || []).map((tag) => (
-                <span key={tag.id} className="tag" style={{ backgroundColor: tag.color, color: "#fff" }}>
+                <span key={tag.id} className="tag" style={{ backgroundColor: tag.color }}>
                   {tag.name}
                 </span>
               ))}
             </div>
-            <h3 className="note-title" onClick={() => openModal(note)}>
-              {note.title}
-            </h3>
-            <svg onClick={() => deleteNote(note.id)} width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M5.16663 14.5C4.79996 14.5 4.48618 14.3696 4.22529 14.1087C3.9644 13.8478 3.83374 13.5338 3.83329 13.1667V4.5H3.16663V3.16667H6.49996V2.5H10.5V3.16667H13.8333V4.5H13.1666V13.1667C13.1666 13.5333 13.0362 13.8473 12.7753 14.1087C12.5144 14.37 12.2004 14.5004 11.8333 14.5H5.16663ZM6.49996 11.8333H7.83329V5.83333H6.49996V11.8333ZM9.16663 11.8333H10.5V5.83333H9.16663V11.8333Z"
-                fill="#554560"
-              />
-            </svg>
+
+            <div className="note-controls">
+              <h3 className="note-title" onClick={() => openModal(note)}>
+                {note.title}
+              </h3>
+              <div className="note-actions">
+                <button className="note-icon" onClick={() => openModal(note)}>✏️</button>
+                <button className="note-icon" onClick={() => deleteNote(note.id)}>🗑</button>
+              </div>
+            </div>
+
             <p className="note-content" onClick={() => openModal(note)}>
               {note.content.length > 100 ? note.content.substring(0, 100) + "..." : note.content}
             </p>
+
+            <p className="note-updated" onClick={() => openModal(note)}>{formattedUpdate}</p>
           </div>
-        ))}
-      </div>
+        );
+      })}
+    </div>
+
 
       {/* Модальне вікно для редагування нотатки */}
       {modalOpen && modalNote && (
@@ -295,6 +327,9 @@ const Notes = () => {
               value={modalNote.title}
               onChange={(e) => setModalNote({ ...modalNote, title: e.target.value })}
             />
+            <p className="note-updated-modal">
+              Оновлено: {formatUpdateDate(modalNote.updated_at)}
+            </p>
             <textarea
               className="modal-input"
               value={modalNote.content}

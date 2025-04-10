@@ -102,6 +102,10 @@
     width: 80%;
 }
 
+.add-button:hover{
+    background: rgb(97, 95, 89)
+}
+
 .expand-button {
     background: #dfe2ec;
     border: none;

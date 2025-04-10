@@ -104,7 +104,7 @@
 }
 
 
-button {
+.home-button {
     background: #121212;
     color: white;
     padding: 10px;
@@ -113,6 +113,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.home-button:hover {
     background: rgb(97, 95, 89)
 }

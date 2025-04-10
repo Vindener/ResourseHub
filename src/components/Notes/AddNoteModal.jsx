@@ -43,7 +43,7 @@ const AddNoteModal = ({ isOpen, onClose, user, onNoteAdded }) => {
       <div className="modal-content" ref={modalRef}>
         <input
           type="text"
-          className="modal-input"
+          className="modal-input-header"
           placeholder="Назва..."
           value={newNote.title}
           onChange={(e) => setNewNote({ ...newNote, title: e.target.value })}

@@ -99,7 +99,7 @@ const SpoonSystem = () => {
           ))}
         </div>
         <p className="spoons-subtitle">{spoons} ложок</p>
-        <button onClick={handleSubmit}>Зберегти</button>
+        <button onClick={handleSubmit} className="home-button">Зберегти</button>
         {message && <p className="message">{message}</p>}
       </>
         
