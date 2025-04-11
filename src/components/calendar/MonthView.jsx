@@ -19,6 +19,16 @@ function MonthView({ date, events, onEdit }) {
     "Неділя",
   ];
 
+  function isToday(date) {
+  const today = new Date();
+  return (
+    date.getDate() === today.getDate() &&
+    date.getMonth() === today.getMonth() &&
+    date.getFullYear() === today.getFullYear()
+  );
+}
+
+
   return (
     <div className="month-view-container">
       <div className="days-of-week">
@@ -40,7 +50,11 @@ function MonthView({ date, events, onEdit }) {
           const dayEvents = events.filter((ev) => isEventInDay(ev, ymd));
 
           return (
-            <div key={dayNum} className="calendar-day">
+           <div
+              key={dayNum}
+              className={`calendar-day ${isToday(thisDate) ? "today" : ""}`}
+            >
+
               <div className="day-number">{dayNum}</div>
               {dayEvents.map((ev) => (
                 <div

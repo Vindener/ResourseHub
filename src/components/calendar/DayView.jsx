@@ -16,7 +16,6 @@ const DayView = ({ date, events, onEdit }) => {
 
   return (
     <div className="day-view-container">
-      <h3>Події за {date.toLocaleDateString("uk-UA")}</h3>
       <div className="day-timeline">
         {hours.map((h) => {
           const label = `${String(h).padStart(2, "0")}:00`;
@@ -32,7 +31,8 @@ const DayView = ({ date, events, onEdit }) => {
                     className="day-event-block"
                     onClick={() => onEdit && onEdit(ev)}
                   >
-                    {ev.title} ({ev.start_time} - {ev.end_time})
+                   <p className="today-title">{ev.title}</p>  
+                   <p className="today-time">{ev.start_time.slice(0, 5)} - {ev.end_time.slice(0, 5)}</p>
                   </div>
                 ))}
               </div>

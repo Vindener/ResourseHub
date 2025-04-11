@@ -43,63 +43,41 @@
 
 /* Кнопки "Додати подію" */
 .calendar-add-event {
+    display: flex;
     margin-bottom: 10px;
 }
 
 .calendar-add-event button {
-    margin-right: 10px;
-    padding: 6px 12px;
-    cursor: pointer;
+    background-color: #121212;
+    color: #FAF4E4;
+    font-weight: 500;
+    font-size: 18px;
     border: none;
-    border-radius: 6px;
-    background-color: #1976d2;
-    color: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    width: 50%;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:12px;
+}
+
+.calendar-add-event button:hover {
+    background-color: rgb(39, 49, 78);
 }
 
 /* ============ МІСЯЧНИЙ ВИГЛЯД ============ */
 .calendar-month-view {
     width: 100%;
 }
-
-.days-of-week {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
-    margin-bottom: 4px;
-}
-
 .week-day-header {
     text-align: center;
     font-weight: bold;
     padding: 6px;
     background-color: #f0f0f0;
     border-radius: 4px;
-}
-
-.calendar-days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
-}
-
-.calendar-day {
-    min-height: 90px;
-    background-color: #fff;
-    border: 1px solid #ececec;
-    border-radius: 4px;
-    padding: 4px;
-    position: relative;
-    cursor: pointer;
-}
-
-.calendar-day.today {
-    background-color: #e0ecff;
-}
-
-.calendar-day.empty {
-    background-color: transparent;
-    border: none;
-    cursor: default;
 }
 
 /* Номер дня */
@@ -206,4 +184,49 @@
     cursor: pointer;
     background-color: #1976d2;
     color: #fff;
+}
+
+.calendar-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px;
+}
+
+.calendar-main {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.calendar-root {
+    flex: 2;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+    background: #fffaed;
+    border-radius: 30px;
+    padding: 16px 23px;
+    width: 95%;
+}
+
+.calendar-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.calendar-layout {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.calendar-left {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-below {
+    margin-top: 16px;
 }

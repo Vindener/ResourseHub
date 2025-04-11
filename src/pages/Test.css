@@ -63,10 +63,7 @@
 /* План */
 .today-block {
     grid-area: today;
-    background-color: #fffaf0;
     padding: 16px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
 }
 
 /* Швидкі дії */

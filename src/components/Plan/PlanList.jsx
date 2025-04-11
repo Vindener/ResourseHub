@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Pencil, Check } from "lucide-react";
-import CompactEventList from "../Events/CompactEventList";
 import "./Plan.css"
 
 const PlanList = () => {
@@ -98,7 +97,6 @@ const toggleDone  = (id, updatedFields) => {
       <div className="plan-header-container">
         <h2 className="plan-header">{formattedTodayDate}</h2>
       </div>
-      <CompactEventList title="Події на сьогодні"/>
       <PlanSection title="Плани на день" plans={dailyPlans} isAdding={isAdding.day} setIsAdding={() => setIsAdding({ ...isAdding, day: true })} isEditing={isEditing.day} setIsEditing={() => setIsEditing({ ...isEditing, day: !isEditing.day })} newPlan={newPlan} setNewPlan={setNewPlan} addPlan={() => addPlan("day", setDailyPlans)} updatePlan={updatePlan} editedPlans={editedPlans} setEditedPlans={setEditedPlans}  toggleDone={toggleDone} deletePlan={deletePlan} />
       <PlanSection title="Плани на тиждень" plans={weeklyPlans} isAdding={isAdding.week} setIsAdding={() => setIsAdding({ ...isAdding, week: true })} isEditing={isEditing.week} setIsEditing={() => setIsEditing({ ...isEditing, week: !isEditing.week })} newPlan={newPlan} setNewPlan={setNewPlan} addPlan={() => addPlan("week", setWeeklyPlans)} updatePlan={updatePlan} editedPlans={editedPlans} setEditedPlans={setEditedPlans}  toggleDone={toggleDone} deletePlan={deletePlan} />
       <PlanSection title="Плани на місяць" plans={monthlyPlans} isAdding={isAdding.month} setIsAdding={() => setIsAdding({ ...isAdding, month: true })} isEditing={isEditing.month} setIsEditing={() => setIsEditing({ ...isEditing, month: !isEditing.month })} newPlan={newPlan} setNewPlan={setNewPlan} addPlan={() => addPlan("month", setMonthlyPlans)} updatePlan={updatePlan} editedPlans={editedPlans} setEditedPlans={setEditedPlans} toggleDone={toggleDone} deletePlan={deletePlan} />
@@ -134,7 +132,7 @@ const PlanSection = ({ title, plans, isAdding, setIsAdding, isEditing, setIsEdit
                   className="plan-input"
                   onBlur={() => updatePlan(plan.id, editedPlans[plan.id] ?? plan.title)}
                 />
-                <button onClick={() => deletePlan(plan.id)} className="plan-delete">
+                <button onClick={() => deletePlan(plan.id)} className="plan-edit">
                   <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1.875 11.25C1.53125 11.25 1.23708 11.1277 0.9925 10.8831C0.747917 10.6385 0.625417 10.3442 0.625 10V1.875H0V0.625H3.125V0H6.875V0.625H10V1.875H9.375V10C9.375 10.3438 9.25271 10.6381 9.00813 10.8831C8.76354 11.1281 8.46917 11.2504 8.125 11.25H1.875ZM3.125 8.75H4.375V3.125H3.125V8.75ZM5.625 8.75H6.875V3.125H5.625V8.75Z" fill="#24418A"/>
                   </svg>
@@ -149,10 +147,10 @@ const PlanSection = ({ title, plans, isAdding, setIsAdding, isEditing, setIsEdit
         ))}
       </dl>
     ) : (
-      <p className="text-gray-500">Немає запланованих подій.</p>
+      <p className="no-text">Немає запланованих подій.</p>
     )}
     {isAdding && (
-      <div className="mt-2 flex items-center gap-2">
+      <div className="plan-input-container">
         <input
           type="text"
           value={newPlan}
@@ -160,7 +158,7 @@ const PlanSection = ({ title, plans, isAdding, setIsAdding, isEditing, setIsEdit
           className="border p-1 rounded w-full"
           placeholder="Введіть новий план"
         />
-        <button onClick={addPlan} className="text-blue-500 text-lg">✔</button>
+        <button onClick={addPlan} className="plan-edit">✔</button>
       </div>
     )}
   </div>

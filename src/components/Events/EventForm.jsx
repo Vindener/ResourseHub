@@ -260,9 +260,6 @@ const EventForm = ({ event = null, onSave, onCancel }) => {
           <button type="submit" className="save-button">
             {event ? "Зберегти зміни" : "Додати подію"}
           </button>
-          <button type="button" onClick={handleCancelClick}>
-            Скасувати
-          </button>
           {event && (
             <button
               type="button"
@@ -290,6 +287,9 @@ const EventForm = ({ event = null, onSave, onCancel }) => {
               🗑️ Видалити подію
             </button>
           )}
+          <button type="button" className="save-button" onClick={handleCancelClick}>
+            Скасувати
+          </button>
         </div>
       </form>
     </div>

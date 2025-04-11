@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import DayView from "./DayView";
 import axios from "axios";
+import "./DayView.css";
 
 const DayViewWrapper = () => {
   const { date } = useParams();
@@ -62,8 +63,8 @@ const DayViewWrapper = () => {
   return (
     <div style={{ padding: 20 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <button onClick={() => navigate(-1)}>← Назад</button>
-        <button onClick={handleAddEvent} style={{ background: "black", color: "white", padding: "6px 16px", borderRadius: "10px" }}>
+        <button onClick={() => navigate(-1)} className="add-event-button">← Назад</button>
+        <button onClick={handleAddEvent} className="add-event-button">
           Додати подію
         </button>
       </div>

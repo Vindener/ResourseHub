@@ -53,7 +53,7 @@ const WeekView = ({ date, onEdit }) => {
     return {
       date: d,
       ymd: toYMD(d),
-      label: d.toLocaleDateString("uk-UA", { weekday: "short" }),
+      label: d.toLocaleDateString("uk-UA", { weekday: "long" }),
       dateNumber: d.getDate(),
     };
   });
@@ -81,8 +81,8 @@ const WeekView = ({ date, onEdit }) => {
         <div className="cell hour-label">Година</div>
         {daysArray.map((day, i) => (
           <div className="cell day-header" key={i}>
-            <div className="day-name">{day.label}</div>
-            <div className="day-number">{day.dateNumber}</div>
+            <div className="week-day-number">{day.dateNumber}</div>
+            <div className="week-day-name">{day.label}</div>
           </div>
         ))}
       </div>
@@ -109,7 +109,7 @@ const WeekView = ({ date, onEdit }) => {
                         <span className="event-title">{ev.title}</span>
                         <br />
                         <span className="event-time">
-                          {ev.start_time} - {ev.end_time}
+                          {ev.start_time.slice(0, 5)} - {ev.end_time.slice(0, 5)}
                         </span>
                       </div>
                     ))}

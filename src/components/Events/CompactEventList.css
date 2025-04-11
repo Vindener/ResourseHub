@@ -1,13 +1,16 @@
 .compact-event-list {
-    background-color: #fdf7ed;
-    border-radius: 20px;
-    padding: 16px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+    background: #fffaed;
+    border-radius: 30px;
+    padding: 16px 24px;
     font-family: "Arial", sans-serif;
 }
 
 .compact-event-list h3 {
     margin-top: 0;
     font-size: 18px;
+    font-weight: 700;
+    color: #121212;
 }
 
 .compact-event-list table {
@@ -17,8 +20,8 @@
 
 .compact-event-list th {
     text-align: left;
-    font-weight: normal;
-    color: #333;
+    color: #000;
+    font-weight: 600;
     font-size: 14px;
     padding-bottom: 4px;
 }
@@ -38,10 +41,11 @@
 }
 
 .event-chip {
-    background-color: #d7d2c6;
-    padding: 6px 12px;
-    border-radius: 20px;
+    background-color: #D8D3C5;
+    padding: 10px 12px;
+    border-radius: 12px;
     display: inline-block;
+    min-width: 200px;
     transition: background 0.2s ease;
 }
 

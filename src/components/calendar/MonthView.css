@@ -1,8 +1,5 @@
 .month-view-container {
     width: 100%;
-    background-color: #fefdf8;
-    padding: 12px;
-    border-radius: 8px;
     font-family: Arial, sans-serif;
 }
 
@@ -10,15 +7,18 @@
 .days-of-week {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
+    gap: 8px;
     margin-bottom: 4px;
 }
 
 .week-day-header {
     text-align: center;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: -0.08em;
     padding: 6px;
-    background-color: #f0f0f0;
+    background-color: #E2E4E7;
+    color: #555555;
     border-radius: 4px;
 }
 
@@ -31,13 +31,16 @@
 
 .calendar-day {
     min-height: 90px;
-    background-color: #fff;
+    background-color: #F4EEDF;
     border: 1px solid #ececec;
-    border-radius: 4px;
-    padding: 4px;
+    border-radius: 12px;
+    padding:6px;
     position: relative;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    font-weight: 600;
+    font-size: 12px;
+    color: #555555;
 }
 
 .calendar-day:hover {
@@ -45,7 +48,7 @@
 }
 
 .calendar-day.today {
-    background-color: #e0ecff;
+    background-color: #B7C8F3;
 }
 
 .calendar-day.empty {

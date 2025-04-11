@@ -1,28 +1,31 @@
 .day-view-container {
     width: 100%;
-    background-color: #fefdf8;
+    background-color: #fffaed;
     padding: 12px;
     border-radius: 8px;
     font-family: Arial, sans-serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
+.day-timeline {
+    border: 1px solid #ececec;
+    border-radius: 4px;
+    overflow-y: auto;
+    max-height: 500px;
+    /* Або будь-яка зручна висота */
+    padding-right: 4px;
+}
 .day-view-container h3 {
     margin-bottom: 12px;
     text-align: center;
     font-size: 1.1rem;
 }
 
-/* Контейнер для таймлайну */
-.day-timeline {
-    border: 1px solid #ececec;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
 /* Рядок для кожної години */
 .day-hour-row {
     display: flex;
-    border-bottom: 1px solid #f0f0f0;
     min-height: 40px;
     align-items: center;
 }
@@ -38,8 +41,6 @@
     padding: 4px;
     font-size: 0.8rem;
     color: #666;
-    background-color: #fafafa;
-    border-right: 1px solid #ececec;
 }
 
 /* Контент для подій у поточній годині */
@@ -51,14 +52,48 @@
 
 /* Блок події */
 .day-event-block {
-    background-color: #1976d2;
+    background-color: #B7C8F3;
+    min-height: 30px;
     color: #fff;
     border-radius: 4px;
     font-size: 0.75rem;
-    padding: 2px 4px;
+    border-radius: 12px;
+    padding: 6px 12px;
     margin-bottom: 2px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
+}
+.today-time{
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: -0.08em;
+    color: #24418A;
+}
+.today-title{
+    font-weight: 600;
+    font-size: 14px;
+    color: #24418A;
+}
+
+.add-event-button {
+    background-color: #121212;
+    color: #FAF4E4;
+    font-weight: 500;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    padding: 10px;
+    width: 30%;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.add-event-button:hover {
+    background-color: rgb(39, 49, 78);
 }
