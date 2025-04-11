@@ -13,6 +13,9 @@ const defaultForm = {
 };
 
 const EventForm = ({ event = null, onSave, onCancel }) => {
+  const [spoonsAvailable, setSpoonsAvailable] = useState(null);
+  const [totalUsedToday, setTotalUsedToday] = useState(0);
+  const [allowOverLimit, setAllowOverLimit] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -63,10 +66,12 @@ const EventForm = ({ event = null, onSave, onCancel }) => {
 
 
   const formatDateForSQL = (jsDate) => {
-    const d = new Date(jsDate);
-    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
-    return d.toISOString().split("T")[0];
-  };
+  const d = new Date(jsDate);
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  return d.toISOString().split("T")[0];
+};
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,6 +85,20 @@ const EventForm = ({ event = null, onSave, onCancel }) => {
       alert("⛔ Неможливо створити подію в минулому");
       return;
     }
+
+    if (!allowOverLimit && form.resource) {
+    const resourceInt = parseInt(form.resource);
+    const usedPlusNew = totalUsedToday + resourceInt;
+
+    if (spoonsAvailable !== null && usedPlusNew > spoonsAvailable) {
+      const confirm = window.confirm(
+        `⛔ Поточний ресурс (${usedPlusNew}) перевищує доступні ложки (${spoonsAvailable}).\n\nДодати подію все одно?`
+      );
+      if (!confirm) return;
+      setAllowOverLimit(true); // щоб дозволити повторне збереження
+    }
+  }
+
 
     try {
       const payload = {
@@ -131,6 +150,36 @@ const EventForm = ({ event = null, onSave, onCancel }) => {
   };
 
   const isPrevDisabled = currentDate <= today;
+
+   useEffect(() => {
+  const fetchSpoons = async () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) return;
+
+    try {
+      const res = await axios.get(`http://localhost:5000/api/spoons/${user.id}`);
+      setSpoonsAvailable(res.data.spoons);
+
+      // Загальна кількість ресурсу в подіях на сьогодні
+      const eventsRes = await axios.get(`http://localhost:5000/events?user_id=${user.id}`);
+      const today = formatDateForSQL(currentDate);
+
+      const totalUsed = eventsRes.data
+        .filter((e) => {
+          const eventDate = new Date(e.event_date);
+          return formatDateForSQL(eventDate) === formatDateForSQL(currentDate);
+        })
+        .reduce((sum, ev) => sum + (parseInt(ev.resource) || 0), 0);
+
+
+      setTotalUsedToday(totalUsed);
+    } catch (error) {
+      console.error("❌ Помилка завантаження ложок або подій:", error);
+    }
+  };
+
+  fetchSpoons();
+}, [currentDate]);
 
   return (
     <div className="event-form-container">
@@ -198,6 +247,12 @@ const EventForm = ({ event = null, onSave, onCancel }) => {
             value={form.resource}
             onChange={handleChange}
           />
+          {spoonsAvailable !== null && (
+        <p style={{ marginTop: "4px", fontSize: "14px", color: totalUsedToday + Number(form.resource || 0) > spoonsAvailable ? "red" : "green" }}>
+          Використано: {totalUsedToday}/{spoonsAvailable} ложок {form.resource && `+ ${form.resource}`}
+        </p>
+      )}
+
 
           <label>Іконка події</label>
           <select
