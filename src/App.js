@@ -29,8 +29,8 @@ const AppContent = () => {
   const isLoginPage = location.pathname === "/login";
 return (
       <div style={{ 
-            marginLeft: isLoginPage ? "0" : "220px", 
-            marginTop:  "40px", 
+            marginLeft: isLoginPage ? "0" : "230px", 
+            // marginTop:  "40px", 
             padding: isLoginPage ? "0" :"10px", 
             width: isLoginPage ? "100%" : "83%", 
             background: isLoginPage ? 'url("/image/backgroundImage.png") no-repeat center center/cover' : "var(--background-color)", 

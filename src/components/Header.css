@@ -1,0 +1,52 @@
+.header {
+    /* position: fixed; */
+    /* top: 0; */
+    /* right: 0; */
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.header-welcome {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-welcome h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.header-welcome p {
+    margin: 2px 0 0 0;
+    font-size: 13px;
+    color: #666;
+}
+
+.header-button {
+    padding: 8px 15px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: #121212;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.header-button:hover {
+    background-color: #585757;
+}
+.header-button-container{
+    display: flex;
+    align-items: center; 
+    gap:12px;
+}

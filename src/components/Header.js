@@ -1,5 +1,7 @@
-import React, { useEffect,useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import SidebarMenu from "./SidebarMenu";
+import "./Header.css";
 
 const pageData = {
   "/": { title: "Головна", icon: "home.png" },
@@ -9,150 +11,75 @@ const pageData = {
   "/tips": { title: "Селфхелп", icon: "transfer.png" },
 };
 
-
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const pageTitle = pageData[location.pathname]?.title || "RESOURSeHub";
 
-  const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
-  const user_ = localStorage.getItem("user");
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    localStorage.removeItem("user");
-    window.location.reload(); 
-    navigate("/login");
-  };
-
   const [user, setUser] = useState(null);
+
   useEffect(() => {
-      const storedUser = localStorage.getItem("user");
-      if (storedUser) {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
       setUser(JSON.parse(storedUser));
-      }
+    }
   }, []);
 
   const isAuthenticated = !!user;
 
+  const handleLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+    navigate("/login");
+  };
+
   return (
     <>
-      {/* Верхній хедер */}
       <header
-        style={{
-          position: "fixed",
-          top: 0,
-          left: role !== "user" && isAuthenticated ? 235 : 0,
-          right: 0,
-          height: "60px",
-          backgroundColor: "#fff",
-          borderBottom: "1px solid #ddd",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 20px",
-          boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
-          zIndex: 1000,
-        }}
+        className="header"
+        style={{ left: role !== "user" && isAuthenticated ? 250 : 0 }}
       >
-        <h2 style={{ margin: 0 }}>{pageTitle}</h2>
         {isAuthenticated ? (
-          <>
-            <h2>{user ? `Вітаємо, ${user.username}!` : "Ласкаво просимо!"}</h2>
-            <button
-              onClick={handleLogout}
-              style={{ padding: "8px 15px", cursor: "pointer" }}
-            >
-              Вийти
-            </button>
-          </>
+          location.pathname === "/" ? (
+            <>
+              <div className="header-welcome">
+                <h2>Вітаємо, {user?.username || "користувач"}!</h2>
+                <p>Цей простір створений для тебе. Працюй у своєму ритмі – ми з тобою.</p>
+              </div>
+              <div className="header-button-container">
+              <button className="header-button">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.0001 14C12.7574 14 14.182 12.6569 14.182 11C14.182 9.34315 12.7574 8 11.0001 8C9.24272 8 7.81812 9.34315 7.81812 11C7.81812 12.6569 9.24272 14 11.0001 14Z" stroke="#FAF4E4" stroke-width="1.5"/>
+                <path d="M12.872 1.152C12.4828 1 11.9885 1 11 1C10.0115 1 9.51721 1 9.12795 1.152C8.87041 1.25251 8.6364 1.3999 8.4393 1.58572C8.2422 1.77155 8.08588 1.99218 7.97927 2.235C7.88169 2.458 7.84245 2.719 7.8276 3.098C7.82069 3.37193 7.7402 3.63973 7.59366 3.87635C7.44712 4.11298 7.23932 4.31069 6.98968 4.451C6.73598 4.58477 6.45044 4.65567 6.15976 4.65707C5.86908 4.65847 5.58278 4.59032 5.32765 4.459C4.97127 4.281 4.71353 4.183 4.45791 4.151C3.90035 4.08187 3.33649 4.22431 2.89027 4.547C2.55723 4.79 2.30904 5.193 1.81478 6C1.32051 6.807 1.07232 7.21 1.01823 7.605C0.981778 7.86545 1.00011 8.13012 1.07218 8.38389C1.14425 8.63767 1.26864 8.87556 1.43824 9.084C1.59522 9.276 1.81478 9.437 2.15524 9.639C2.65693 9.936 2.97937 10.442 2.97937 11C2.97937 11.558 2.65693 12.064 2.15524 12.36C1.81478 12.563 1.59416 12.724 1.43824 12.916C1.26864 13.1244 1.14425 13.3623 1.07218 13.6161C1.00011 13.8699 0.981778 14.1345 1.01823 14.395C1.07338 14.789 1.32051 15.193 1.81371 16C2.30904 16.807 2.55617 17.21 2.89027 17.453C3.11135 17.6129 3.36368 17.7302 3.63284 17.7981C3.902 17.8661 4.18273 17.8834 4.45897 17.849C4.71353 17.817 4.97127 17.719 5.32765 17.541C5.58278 17.4097 5.86908 17.3415 6.15976 17.3429C6.45044 17.3443 6.73598 17.4152 6.98968 17.549C7.50198 17.829 7.80638 18.344 7.8276 18.902C7.84245 19.282 7.88063 19.542 7.97927 19.765C8.08588 20.0078 8.2422 20.2284 8.4393 20.4143C8.6364 20.6001 8.87041 20.7475 9.12795 20.848C9.51721 21 10.0115 21 11 21C11.9885 21 12.4828 21 12.872 20.848C13.1296 20.7475 13.3636 20.6001 13.5607 20.4143C13.7578 20.2284 13.9141 20.0078 14.0207 19.765C14.1183 19.542 14.1576 19.282 14.1724 18.902C14.1936 18.344 14.498 17.828 15.0103 17.549C15.264 17.4152 15.5496 17.3443 15.8402 17.3429C16.1309 17.3415 16.4172 17.4097 16.6724 17.541C17.0287 17.719 17.2865 17.817 17.541 17.849C17.8173 17.8834 18.098 17.8661 18.3672 17.7981C18.6363 17.7302 18.8886 17.6129 19.1097 17.453C19.4438 17.211 19.691 16.807 20.1852 16C20.6795 15.193 20.9277 14.79 20.9818 14.395C21.0182 14.1345 20.9999 13.8699 20.9278 13.6161C20.8558 13.3623 20.7314 13.1244 20.5618 12.916C20.4048 12.724 20.1852 12.563 19.8448 12.361C19.5965 12.2184 19.3907 12.0187 19.2465 11.7807C19.1024 11.5427 19.0247 11.2741 19.0206 11C19.0206 10.442 19.3431 9.936 19.8448 9.64C20.1852 9.437 20.4058 9.276 20.5618 9.084C20.7314 8.87556 20.8558 8.63767 20.9278 8.38389C20.9999 8.13012 21.0182 7.86545 20.9818 7.605C20.9266 7.211 20.6795 6.807 20.1863 6C19.691 5.193 19.4438 4.79 19.1097 4.547C18.8886 4.38709 18.6363 4.26981 18.3672 4.20187C18.098 4.13392 17.8173 4.11664 17.541 4.151C17.2865 4.183 17.0287 4.281 16.6713 4.459C16.4163 4.59014 16.1302 4.6582 15.8397 4.6568C15.5492 4.6554 15.2639 4.58459 15.0103 4.451C14.7607 4.31069 14.5529 4.11298 14.4063 3.87635C14.2598 3.63973 14.1793 3.37193 14.1724 3.098C14.1576 2.718 14.1194 2.458 14.0207 2.235C13.9141 1.99218 13.7578 1.77155 13.5607 1.58572C13.3636 1.3999 13.1296 1.25251 12.872 1.152Z" stroke="#FAF4E4" stroke-width="1.5"/>
+                </svg>  
+              </button>
+              <button className="header-button">
+                <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.93816 7C1.93816 5.14348 2.67566 3.36301 3.98842 2.05025C5.30117 0.737498 7.08165 0 8.93816 0C10.7947 0 12.5752 0.737498 13.8879 2.05025C15.2007 3.36301 15.9382 5.14348 15.9382 7V10.764L17.7602 14.408C17.844 14.5757 17.8836 14.7621 17.8752 14.9494C17.8668 15.1368 17.8106 15.3188 17.712 15.4783C17.6134 15.6379 17.4757 15.7695 17.3119 15.8608C17.1481 15.9521 16.9637 16 16.7762 16H12.8122C12.5897 16.8582 12.0886 17.6183 11.3874 18.1609C10.6863 18.7035 9.82476 18.9979 8.93816 18.9979C8.05157 18.9979 7.19007 18.7035 6.4889 18.1609C5.78773 17.6183 5.2866 16.8582 5.06416 16H1.10016C0.912641 16 0.728224 15.9521 0.56443 15.8608C0.400635 15.7695 0.262901 15.6379 0.164308 15.4783C0.0657151 15.3188 0.00953771 15.1368 0.00111129 14.9494C-0.00731514 14.7621 0.0322892 14.5757 0.116163 14.408L1.93816 10.764V7ZM7.20616 16C7.38171 16.304 7.63418 16.5565 7.93821 16.732C8.24223 16.9075 8.58711 16.9999 8.93816 16.9999C9.28922 16.9999 9.63409 16.9075 9.93812 16.732C10.2421 16.5565 10.4946 16.304 10.6702 16H7.20616ZM8.93816 2C7.61208 2 6.34031 2.52678 5.40263 3.46447C4.46495 4.40215 3.93816 5.67392 3.93816 7V10.764C3.93814 11.0743 3.8659 11.3804 3.72716 11.658L2.55716 14H15.3202L14.1502 11.658C14.0111 11.3805 13.9385 11.0744 13.9382 10.764V7C13.9382 5.67392 13.4114 4.40215 12.4737 3.46447C11.536 2.52678 10.2642 2 8.93816 2Z" fill="#FAF4E4"/>
+                </svg>
+              </button>
+              <button className="header-button">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 18.5C1 17.1739 1.52678 15.9021 2.46447 14.9645C3.40215 14.0268 4.67392 13.5 6 13.5H16C17.3261 13.5 18.5979 14.0268 19.5355 14.9645C20.4732 15.9021 21 17.1739 21 18.5C21 19.163 20.7366 19.7989 20.2678 20.2678C19.7989 20.7366 19.163 21 18.5 21H3.5C2.83696 21 2.20107 20.7366 1.73223 20.2678C1.26339 19.7989 1 19.163 1 18.5Z" stroke="#FAF4E4" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M11 8.5C13.0711 8.5 14.75 6.82107 14.75 4.75C14.75 2.67893 13.0711 1 11 1C8.92893 1 7.25 2.67893 7.25 4.75C7.25 6.82107 8.92893 8.5 11 8.5Z" stroke="#FAF4E4" stroke-width="1.5"/>
+                </svg>
+              </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <h2>{pageTitle}</h2>
+            </>
+          )
         ) : (
-          <button
-            onClick={() => navigate("/login")}
-            style={{ padding: "8px 15px", cursor: "pointer" }}
-          >
+          <button onClick={() => navigate("/login")} className="header-button">
             Увійти
           </button>
         )}
       </header>
 
-      {/* Бокове меню  */}
-      {isAuthenticated  && (
-        <nav
-          style={{
-            position: "fixed",
-            left: 0,
-            top: 0,
-            width: "215px",
-            height: "100vh",
-            backgroundColor: "#121212",
-            borderRight: "1px solid #ddd",
-            padding: "10px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            overflowY: "auto",
-          }}
-        >
-          <h2>
-            <Link
-              to="/"
-              style={{
-                padding: "8px",
-                textDecoration: "none",
-                borderRadius: "15px",
-                color:"#FAF4E4"
-              }}
-            >
-              {/* <img
-                src={"./image/header/header.png"}
-                alt={`Home Image`}
-                className="home-image"
-                style={{ width: "46px", height: "46px", marginRight: "6px" }}
-              /> */}
-              RESOURSeHub
-            </Link>
-          </h2>
-          {Object.entries(pageData)
-            .filter(([path]) => role === "admin" || path !== "/admin") // Приховуємо адмінські сторінки для не-адмінів
-            .map(([path, { title, icon }]) => (
-              <Link
-                key={path}
-                to={path}
-                style={{
-                  padding: "8px",
-                  display: "flex",
-                  alignItems: "center",
-                  textDecoration: "none",
-                  color: location.pathname === path ? "#FAF4E4" : "#FAF4E4",
-                  fontWeight: location.pathname === path ? "bold" : "normal",
-                  backgroundColor: location.pathname === path ? "#8AAEE0" : "transparent",
-                  borderRadius: "5px",
-                }}
-                onMouseOver={(e) => {
-                  e.target.style.backgroundColor = "#8AAEE0";
-                  e.target.style.color = "#FFFFFF";
-                }}
-                onMouseOut={(e) => {
-                  e.target.style.backgroundColor =
-                    location.pathname === path ? "#8AAEE0" : "transparent";
-                  e.target.style.color = location.pathname === path ? "#FAF4E4" : "#FAF4E4";
-                }}
-              >
-                {/* <img
-                  src={`./image/header/${icon}`}
-                  alt={title}
-                  style={{ width: "20px", height: "20px", marginRight: "10px" }}
-                /> */}
-                {title}
-              </Link>
-            ))}
-
-            
-        </nav>
-      )}
+      {isAuthenticated && <SidebarMenu />}
     </>
   );
 };

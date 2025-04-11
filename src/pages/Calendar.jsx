@@ -120,7 +120,9 @@ const CalendarWithEvents = () => {
       </button>
     </div>
 
-    <CompactEventList title="Події на сьогодні" />
+    <div className="compact-event-calendar">
+      <CompactEventList title="Події на сьогодні" />
+    </div>
   </div>
 </div>
 
