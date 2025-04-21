@@ -41,7 +41,5 @@
   "main": "index.js",
   "devDependencies": {
     "web-vitals": "^4.2.4"
-  },
-  "author": "Anna",
-  "license": "ISC"
+  }
 }
