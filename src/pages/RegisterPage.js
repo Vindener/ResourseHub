@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -37,22 +38,16 @@ const RegisterPage = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
+    <div className="login-box">
       <h2>Реєстрація</h2>
+        <p>Вже зареєстровані?  <a href="/login"> Натисніть тут</a></p>
+
       <form onSubmit={handleRegister}>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="Ім'я користувача"
-          required
-        />
-        <br />
-        <input
-          type="text"
-          value={petName}
-          onChange={(e) => setPetName(e.target.value)}
-          placeholder="Ім'я улюбленця"
           required
         />
         <br />

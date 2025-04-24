@@ -1,0 +1,86 @@
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.login-box {
+    background: linear-gradient(180deg, rgba(102, 97, 97, 0.7), rgba(65, 63, 63, 0.7));
+    padding: 40px 32px;
+    max-width: 400px;
+    width: 100%;
+    color: #f5f5f5;
+    text-align: center;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(250, 244, 228, 0.6);
+    border-radius: 32px;
+}
+
+.login-box h2 {
+    font-size: 32px;
+    color: #c8ffb3;
+    /* світло-зелений */
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.login-box p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #f2dcd7;
+}
+
+.login-box p a {
+    color: #e3a7ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-box label {
+    display: block;
+    text-align: left;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #c8ffb3;
+}
+
+.login-box input[type="email"],
+.login-box input[type="password"],.login-box input[type="text"] {
+    width: 90%;
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 2px solid #ddd9ce;
+    background-color: transparent;
+    color: #fefefe;
+    outline: none;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+.login-box input::placeholder {
+    color: #d8d8d8;
+    opacity: 0.8;
+}
+
+.login-box button {
+    background-color: #f6d868;
+    color: #5b5543;
+    padding: 12px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-box button:hover {
+    background-color: #f5cb4f;
+}

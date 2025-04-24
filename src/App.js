@@ -26,18 +26,22 @@ const AppContent = () => {
 // Якщо ми на сторінці входу, додаємо фон
   const location = useLocation(); // Отримуємо поточний маршрут
 
-  const isLoginPage = location.pathname === "/login";
+  const isLoginPage = location.pathname === "/login"||location.pathname === "/register";
 return (
       <div style={{ 
             marginLeft: isLoginPage ? "0" : "230px", 
             // marginTop:  "40px", 
             padding: isLoginPage ? "0" :"10px", 
             width: isLoginPage ? "100%" : "83%", 
-            background: isLoginPage ? 'url("/image/backgroundImage.png") no-repeat center center/cover' : "var(--background-color)", 
+            background: isLoginPage
+              ? 'url(/images/backgroundImage.png) center center / cover no-repeat rgb(0 0 0)'
+              : "#121212",
+            backgroundColor: isLoginPage ? "#121212" : "#fffaf0", // fallback
             display: isLoginPage ? "flex":"block",
             alignItems: isLoginPage ? "center":"",
             justifyContent:isLoginPage ?  "center":""
           }}
+          className="app-container"
       >
         <Header /> 
 
