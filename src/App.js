@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import PersonalAccount from "./components/PersonalAccount";
+import PersonalAccount from "./pages/PersonalAccountPage.jsx";
 import Notes from "./components/Notes/Notes";
-import RelaxationPage from "./components/RelaxationPage";
-import PomodoroTimer from "./components/PomodoroTimer";
 
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -64,14 +62,12 @@ return (
 
           <Route path="/notes" element={<Notes />} />
           <Route path="/account" element={<PersonalAccount />} />
-          <Route path="/relaxation" element={<RelaxationPage />} />
 
           <Route path="/selfhelp" element={<SelfHelpMain />} />
           <Route path="/selfhelp/adhd" element={<SelfHelpADHD />} />
           <Route path="/selfhelp/timemanagement" element={<SelfHelpTimeMent />} />
           <Route path="/selfhelp/rest" element={<SelfHelpRelaxing />} />
           <Route path="/selfhelp/focus" element={<SelfHelpFocus />} />
-          <Route path="/pomodoro" element={<PomodoroTimer />} />
 
           <Route path="/tamagotchi" element={<Tamagotchi />} />
 

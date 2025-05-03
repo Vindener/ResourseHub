@@ -17,6 +17,7 @@
     padding: 14px 20px;
     border-radius: 12px;
     margin-bottom: 12px;
+    border: none;
     text-align: center;
     font-weight: 600;
     cursor: pointer;
@@ -75,4 +76,43 @@
 .yellow-bg {
     background-color: #F6D868;
     color: #776935;
+}
+
+.focus-times {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.focus-time-value {
+    background: #e0ddd6;
+    border-radius: 8px;
+    padding: 4px 12px;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.focus-timer {
+    font-size: 48px;
+    font-weight: bold;
+    border-radius: 12px;
+    padding: 12px 0;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.focus-message {
+    font-weight: 600;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.focus-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+.focus-buttons .selfhelp-button{
+    width: 50%;
 }
