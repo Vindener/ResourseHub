@@ -8,7 +8,7 @@ const pageData = {
   "/calendar": { title: "Календар", icon: "home.png" },
   "/notes": { title: "Нотатник", icon: "acts.png" },
   "/tamagotchi": { title: "Тамагочі", icon: "settle.png" },
-  "/tips": { title: "Селфхелп", icon: "transfer.png" },
+  "/selfhelp": { title: "Селфхелп", icon: "transfer.png" },
 };
 
 const Header = () => {

@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import PersonalAccount from "./components/PersonalAccount";
 import Notes from "./components/Notes/Notes";
-import TimeManagementTips from "./components/TimeManagementTips";
 import RelaxationPage from "./components/RelaxationPage";
 import PomodoroTimer from "./components/PomodoroTimer";
 
@@ -17,6 +16,11 @@ import DayViewWrapper from "./components/calendar/DayViewWrapper";
 import EventEditPage from "./components/Events/EventEditPage";
 import NewEventPage from "./components/Events/NewEventPage";
 
+import SelfHelpMain from "./pages/SelfHelp/SelfHelpMain";
+import SelfHelpADHD from "./pages/SelfHelp/SelfHelpADHD";
+import SelfHelpTimeMent from "./pages/SelfHelp/SelfHelpTimeMent";
+import SelfHelpRelaxing from "./pages/SelfHelp/SelfHelpRelaxing";
+import SelfHelpFocus from "./pages/SelfHelp/SelfHelpFocus";
 
 import Header  from "./components/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -60,8 +64,13 @@ return (
 
           <Route path="/notes" element={<Notes />} />
           <Route path="/account" element={<PersonalAccount />} />
-          <Route path="/tips" element={<TimeManagementTips />} />
           <Route path="/relaxation" element={<RelaxationPage />} />
+
+          <Route path="/selfhelp" element={<SelfHelpMain />} />
+          <Route path="/selfhelp/adhd" element={<SelfHelpADHD />} />
+          <Route path="/selfhelp/timemanagement" element={<SelfHelpTimeMent />} />
+          <Route path="/selfhelp/rest" element={<SelfHelpRelaxing />} />
+          <Route path="/selfhelp/focus" element={<SelfHelpFocus />} />
           <Route path="/pomodoro" element={<PomodoroTimer />} />
 
           <Route path="/tamagotchi" element={<Tamagotchi />} />

@@ -1,0 +1,78 @@
+.selfhelp-container {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.selfhelp-title,.selfhelp-subtitle {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+    text-align: center;
+}
+.selfhelp-subtitle{
+    text-align: left;
+}
+
+.selfhelp-button {
+    padding: 14px 20px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.selfhelp-button:hover {
+    transform: scale(1.02);
+}
+
+/* Кольори для кожної кнопки */
+.violet {
+    background-color: #CBA8E1;
+}
+
+.green {
+    background-color: #BFE0A5;
+}
+
+.yellow {
+    background-color: #F6D868;
+}
+
+.blue {
+    background-color: #B7C8F3;
+}
+
+/* Текстовий блок */
+.selfhelp-text-block {
+    background-color: white;
+    border-radius: 20px;
+    padding: 14px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+}
+.selfhelp-text-block p,.selfhelp-text-block ul{
+    margin: 0;
+}
+
+.violet-bg {
+    background-color: #CBA8E1;
+    color: #554560;
+}
+.green-bg {
+    background-color: #BFE0A5;
+    color: #607053;
+}
+.blue-bg {
+    background-color: #B7C8F3;
+    color: #24418A;
+}
+.yellow-bg {
+    background-color: #F6D868;
+    color: #776935;
+}
