@@ -7,7 +7,7 @@ const pageData = {
   "/": { title: "Головна", icon: "home.png" },
   "/calendar": { title: "Календар", icon: "home.png" },
   "/notes": { title: "Нотатник", icon: "acts.png" },
-  "/new": { title: "Тамагочі", icon: "settle.png" },
+  "/tamagotchi": { title: "Тамагочі", icon: "settle.png" },
   "/tips": { title: "Селфхелп", icon: "transfer.png" },
 };
 

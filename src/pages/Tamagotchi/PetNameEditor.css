@@ -1,0 +1,35 @@
+.pet-name-editor {
+    display: flex;
+    align-items: center;
+    background-color: #c7d7f3;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #24418a;
+}
+
+.name-display {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.edit-btn,
+.save-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.name-input {
+    border: none;
+    border-radius: 12px;
+    padding: 4px 10px;
+    font-size: 16px;
+    outline: none;
+    flex-grow: 1;
+    background-color: white;
+}

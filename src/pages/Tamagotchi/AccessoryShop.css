@@ -1,0 +1,132 @@
+.shop-container {
+    padding: 20px;
+}
+
+.shop-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.item {
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item.selected {
+    border: 2px solid #776935;
+}
+
+.item img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.item p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #444;
+}
+
+.item button,.pet-button {
+    margin-top: 8px;
+    background-color: #f6d868;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.item button:hover,.pet-button:hover {
+    background-color: #e0c35d;
+}
+
+.buy-button {
+    margin-top: 30px;
+    padding: 12px 20px;
+    background-color: #f6d868;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.buy-button:hover {
+    background-color: #e0c35d;
+}
+
+.item .price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+
+.item.owned .price {
+    visibility: hidden;
+}
+
+.item.selected {
+    outline: 3px solid #4CAF50;
+    border-radius: 10px;
+}
+
+.pet-choices {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.pet-choice {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    background: #fdf7e9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 120px;
+}
+
+.pet-icon {
+    width: 80px;
+    height: auto;
+}
+
+.active-pet {
+    border: 2px solid #8bc34a;
+}
+
+.pet-choice button {
+    margin-top: 8px;
+}
+
+.shop-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+

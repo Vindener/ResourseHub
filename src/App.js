@@ -8,6 +8,7 @@ import PomodoroTimer from "./components/PomodoroTimer";
 
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import Tamagotchi from "./pages/Tamagotchi/TamagotchiPage";
 
 import HomePage from "./pages/HomePage";
 import Calendar from "./pages/Calendar";
@@ -62,6 +63,8 @@ return (
           <Route path="/tips" element={<TimeManagementTips />} />
           <Route path="/relaxation" element={<RelaxationPage />} />
           <Route path="/pomodoro" element={<PomodoroTimer />} />
+
+          <Route path="/tamagotchi" element={<Tamagotchi />} />
 
           <Route
             path="*"

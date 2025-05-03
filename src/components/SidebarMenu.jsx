@@ -7,7 +7,7 @@ const menuItems = [
   { path: "/", label: "Головна", icon: "🏵️" },
   { path: "/calendar", label: "Календар", icon: "📅" },
   { path: "/notes", label: "Нотатник", icon: "📄" },
-  { path: "/new", label: "Тамагочі", icon: "🐾" },
+  { path: "/tamagotchi", label: "Тамагочі", icon: "🐾" },
   { path: "/tips", label: "Селфхелп", icon: "ℹ️" },
 ];
 
