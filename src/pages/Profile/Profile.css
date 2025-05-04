@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+.profile-page {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fffaf0;
+    padding: 20px;
+}
+
+.profile-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.profile-card {
+    background-color: #fef8e8;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.profile-banner {
+    height: 100px;
+    background: url('../../../public/images/tamagotchi/tama-block.png') no-repeat center/cover;
+    border-radius: 10px;
+}
+
+.profile-info-section {
+    display: flex;
+    align-items: center;
+    margin-top: -40px;
+}
+
+.profile-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+}
+
+.profile-main {
+    margin-left: 20px;
+}
+
+.edit-button {
+    margin-top: 5px;
+    background-color: #fcd768;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.progress-block {
+    background-color: #d6a3f5;
+    padding: 10px;
+    border-radius: 15px;
+    width: 180px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.progress-circle {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.pet-block {
+    background-color: #c1e3c1;
+    border-radius: 15px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.pet-title {
+    font-weight: 600;
+}
+
+.pet-emotions {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.pet-avatar img {
+    width: 50px;
+    height: auto;
+}
+
+.pet-status {
+    font-weight: bold;
+    background-color: #9effa8;
+    border-radius: 10px;
+    padding: 4px;
+    margin-top: 5px;
+}

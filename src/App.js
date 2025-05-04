@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import PersonalAccount from "./pages/PersonalAccountPage.jsx";
+import UserProfilePage from "./pages/Profile/UserProfilePage.jsx";
+import UserSettingsPage from "./pages/Profile/UserSettingsPage.jsx";
 import Notes from "./components/Notes/Notes";
 
 import LoginPage from "./pages/LoginPage";
@@ -61,7 +63,9 @@ return (
           <Route path="/calendar/new" element={<NewEventPage />} />
 
           <Route path="/notes" element={<Notes />} />
-          <Route path="/account" element={<PersonalAccount />} />
+          <Route path="/account-personal" element={<PersonalAccount />} />
+          <Route path="/account" element={<UserProfilePage />} />
+          <Route path="/account/settings" element={<UserSettingsPage />} />
 
           <Route path="/selfhelp" element={<SelfHelpMain />} />
           <Route path="/selfhelp/adhd" element={<SelfHelpADHD />} />
