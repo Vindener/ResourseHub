@@ -277,7 +277,13 @@ const Notes = () => {
       </header>
 
       <div className="notes-grid">
-      {filteredNotes.map((note) => {
+        {filteredNotes.length === 0 ? (
+          <div className="empty-notes-message">
+            Тут ще немає ваших нотаток.
+            <br />
+            Натисніть кнопку + на верхній панелі, щоб додати першу нотатку.
+          </div>
+        ) : ( filteredNotes.map((note) => {
         const updatedAt = new Date(note.updated_at);
         const now = new Date();
         const isYesterday = updatedAt.toDateString() === new Date(now.setDate(now.getDate() - 1)).toDateString();
@@ -313,7 +319,8 @@ const Notes = () => {
             <p className="note-updated" onClick={() => openModal(note)}>{formattedUpdate}</p>
           </div>
         );
-      })}
+       })
+    )}
     </div>
 
 
