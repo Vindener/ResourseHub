@@ -27,8 +27,6 @@ if (pet.active_accessory_id && petAccessoryImages[pet.active_accessory_id]) {
   finalImage = petAccessoryImages[pet.active_accessory_id][pet.type] || baseImage;
 }
 
-
-
     return (
       <div className="pet-main-screen">
         <div className="pet-topbar">

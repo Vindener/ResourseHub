@@ -1,0 +1,91 @@
+.pet-summary-card {
+    background-color: #c4f0c3;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pet-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pet-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0;
+}
+
+.pet-mood {
+    background-color: #79aa5c;
+    padding: 4px 10px;
+    border-radius: 16px;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.pet-needs {
+    display: flex;
+    gap: 12px;
+}
+
+.need-pie {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.need-icon {
+    position: absolute;
+    top: 8px;
+    left: 9px;
+    font-size: 18px;
+}
+.pet-image{
+    width: 155px;
+    height: 155px;
+}
+.need-pie-wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0 5px;
+}
+
+.need-icon-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+}
+.pet-needs {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+    align-items: center;
+}
+
+.need-pie-wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.need-icon-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    pointer-events: none;
+}

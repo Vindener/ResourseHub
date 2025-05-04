@@ -5,6 +5,7 @@ import PlanListForHome from "../components/Plan/PlanListForHome";
 import WeeklyProgress from "../components/Plan/WeeklyProgress";
 import SpoonSystem from "../components/Spoon/SpoonSystem";
 import AddNoteModal from "../components/Notes/AddNoteModal";
+import PetSummaryCard from "../components/Tamagotchi/PetSummaryCard";
 import "./Test.css";
 
 const HomePage = () => {
@@ -36,9 +37,7 @@ const HomePage = () => {
       </div>
 
       <div className="tamagochi-block">
-        <h4>Тузік</h4>
-        <p>{user ? user.pet_name : "Завантаження..."}</p>
-        <div className="status">Щастя</div>
+        <PetSummaryCard />
       </div>
 
       <div className="calendar-block">

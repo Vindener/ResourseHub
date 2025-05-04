@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import WeeklyProgress from "../../components/Plan/WeeklyProgress";
+import PetSummaryCard from "../../components/Tamagotchi/PetSummaryCard";
 import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
@@ -40,17 +41,7 @@ const UserProfile = () => {
           </div>
 
           <div className="pet-block">
-            <div className="pet-title">Тузік</div>
-            <div className="pet-emotions">
-              <span>💤</span>
-              <span>🍔</span>
-              <span>🧼</span>
-              <span>🧠</span>
-            </div>
-            <div className="pet-avatar">
-              <img src="/pets/dog.png" alt="Pet" />
-            </div>
-            <div className="pet-status">Щастя</div>
+            <PetSummaryCard />
           </div>
         </div>
       </div>
