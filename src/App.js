@@ -1,11 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import PersonalAccount from "./pages/PersonalAccountPage.jsx";
 import UserProfilePage from "./pages/Profile/UserProfilePage.jsx";
 import UserSettingsPage from "./pages/Profile/UserSettingsPage.jsx";
 import Notes from "./components/Notes/Notes";
 
 import LoginPage from "./pages/LoginPage";
+import LandingPage from "./pages/LandingPage";
 import RegisterPage from "./pages/RegisterPage";
 import Tamagotchi from "./pages/Tamagotchi/TamagotchiPage";
 
@@ -54,6 +55,7 @@ return (
           <Route path="/login" element={<LoginPage />} />
 
           <Route path="/" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+          <Route path="/landing" element={<LandingPage />} />
           <Route path="/register" element={<RegisterPage />} />
 
           <Route path="/calendar" element={<Calendar />} />

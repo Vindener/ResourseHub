@@ -1,0 +1,91 @@
+.landing-container{
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.slogan{
+    text-align: center;
+    width: 100%;
+    font-weight: 700;
+    font-size: 24px;
+}
+.welcome-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+}
+
+.block.reverse {
+    flex-direction: row-reverse;
+}
+
+.block .text {
+    flex: 1 1 60%;
+}
+
+.block .image {
+    flex: 1 1 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block .image img {
+    max-width: 370px;
+    height: auto;
+}
+
+.block.violet {
+    background-color: #e9d8fd;
+    color: #2d0073;
+}
+
+.block.yellow {
+    background-color: #fff3b0;
+    color: #624000;
+}
+
+.block.blue {
+    background-color: #dbeafe;
+    color: #1e3a8a;
+}
+
+.block.ending {
+    background-color: #e8d4f8;
+    text-align: center;
+    font-weight: 600;
+    color: #5b007b;
+    padding: 20px 30px;
+}
+
+.block h2,
+.block h3 {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.block p,
+.block ul {
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.block ul {
+    padding-left: 20px;
+}

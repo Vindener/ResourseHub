@@ -1,5 +1,5 @@
 // SidebarMenu.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./SidebarMenu.css";
 
@@ -14,6 +14,16 @@ const menuItems = [
 const SidebarMenu = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+    
+   useEffect(() => {
+      const storedUser = localStorage.getItem("user");
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    }, []);
+  
+  const isAuthenticated = !!user;
 
   const handleLogout = () => {
     localStorage.clear();
@@ -40,20 +50,37 @@ const SidebarMenu = () => {
     </div>
 
     <div className="sidebar-container"> 
-      <nav className="menu">
-        {menuItems.map(({ path, label, icon }) => (
-          <Link
-            key={path}
-            to={path}
-            className={`menu-item ${location.pathname === path ? "active" : ""}`}
-          >
-            <span className="icon">{icon}</span>
-            <span className="label">{label}</span>
-          </Link>
-        ))}
-      </nav>
+      {isAuthenticated ? (
+          <>
+          <nav className="menu">
+            {menuItems.map(({ path, label, icon }) => (
+              <Link
+                key={path}
+                to={path}
+                className={`menu-item ${location.pathname === path ? "active" : ""}`}
+              >
+                <span className="icon">{icon}</span>
+                <span className="label">{label}</span>
+              </Link>
+            ))}
+          </nav>
 
-      <button className="logout" onClick={handleLogout}>↪ Вийти</button>
+          <button className="logout" onClick={handleLogout}>↪ Вийти</button>
+          </>
+      ) : (
+        <>
+          <nav className="menu">
+            <Link
+                to="/"
+                className={`menu-item active`}
+              >
+                <span className="icon">{"🏵️" }</span>
+                <span className="label">{"Головна"}</span>
+              </Link>
+          </nav>
+          <button className="logout" onClick={() => navigate("/login")}>↪ Увійти</button>
+          </>
+          )}
     </div>
     </nav>
   );
