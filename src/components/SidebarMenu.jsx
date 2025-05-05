@@ -8,7 +8,7 @@ const menuItems = [
   { path: "/calendar", label: "Календар", icon: "📅" },
   { path: "/notes", label: "Нотатник", icon: "📄" },
   { path: "/tamagotchi", label: "Тамагочі", icon: "🐾" },
-  { path: "/tips", label: "Селфхелп", icon: "ℹ️" },
+  { path: "/selfhelp", label: "Селфхелп", icon: "ℹ️" },
 ];
 
 const SidebarMenu = () => {
