@@ -57,10 +57,10 @@
     background-color: #1e1e1e;
 }
 
-.icon {
-    font-size: 18px;
+.icon img{
+    width: 24px;
+    height: 24px;
 }
-
 .logout {
     background: none;
     border: none;
