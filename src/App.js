@@ -26,8 +26,6 @@ import SelfHelpFocus from "./pages/SelfHelp/SelfHelpFocus";
 import Header  from "./components/Header";
 import ProtectedRoute from "./components/ProtectedRoute";
 
-
-
 const AppContent = () => {
 // Якщо ми на сторінці входу, додаємо фон
   const location = useLocation(); // Отримуємо поточний маршрут
@@ -58,24 +56,24 @@ return (
           <Route path="/landing" element={<LandingPage />} />
           <Route path="/register" element={<RegisterPage />} />
 
-          <Route path="/calendar" element={<Calendar />} />
-          <Route path="/calendar/new" element={<AddEvent />} />
-          <Route path="/calendar/day/:date" element={<DayViewWrapper />} />
-          <Route path="/calendar/edit/:id" element={<EventEditPage />} />
-          <Route path="/calendar/new" element={<NewEventPage />} />
+          <Route path="/calendar" element={<ProtectedRoute><Calendar /></ProtectedRoute>} />
+          <Route path="/calendar/new" element={<ProtectedRoute><AddEvent /></ProtectedRoute>} />
+          <Route path="/calendar/day/:date" element={<ProtectedRoute><DayViewWrapper /></ProtectedRoute>} />
+          <Route path="/calendar/edit/:id" element={<ProtectedRoute><EventEditPage /></ProtectedRoute>} />
+          <Route path="/calendar/new" element={<ProtectedRoute><NewEventPage /></ProtectedRoute>} />
 
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/account-personal" element={<PersonalAccount />} />
-          <Route path="/account" element={<UserProfilePage />} />
-          <Route path="/account/settings" element={<UserSettingsPage />} />
+          <Route path="/notes" element={<ProtectedRoute><Notes /></ProtectedRoute>} />
+          <Route path="/account-personal" element={<ProtectedRoute><PersonalAccount /></ProtectedRoute>} />
+          <Route path="/account" element={<ProtectedRoute><UserProfilePage /></ProtectedRoute>} />
+          <Route path="/account/settings" element={<ProtectedRoute><UserSettingsPage /></ProtectedRoute>} />
 
-          <Route path="/selfhelp" element={<SelfHelpMain />} />
-          <Route path="/selfhelp/adhd" element={<SelfHelpADHD />} />
-          <Route path="/selfhelp/timemanagement" element={<SelfHelpTimeMent />} />
-          <Route path="/selfhelp/rest" element={<SelfHelpRelaxing />} />
-          <Route path="/selfhelp/focus" element={<SelfHelpFocus />} />
+          <Route path="/selfhelp" element={<ProtectedRoute><SelfHelpMain /></ProtectedRoute>} />
+          <Route path="/selfhelp/adhd" element={<ProtectedRoute><SelfHelpADHD /></ProtectedRoute>} />
+          <Route path="/selfhelp/timemanagement" element={<ProtectedRoute><SelfHelpTimeMent /></ProtectedRoute>} />
+          <Route path="/selfhelp/rest" element={<ProtectedRoute><SelfHelpRelaxing /></ProtectedRoute>} />
+          <Route path="/selfhelp/focus" element={<ProtectedRoute><SelfHelpFocus /></ProtectedRoute>} />
 
-          <Route path="/tamagotchi" element={<Tamagotchi />} />
+          <Route path="/tamagotchi" element={<ProtectedRoute><Tamagotchi /></ProtectedRoute>} />
 
           <Route
             path="*"
