@@ -2,6 +2,7 @@
   import "./Tamagotchi.css";
   import CoinDisplay from "./CoinDisplay";
   import PetNameEditor from "./PetNameEditor";
+import { PieChart, Pie, Cell } from "recharts";
 
   const MainPetScreen = ({ pet, onFeed, onClean, onSleep, onEditName,onShop,userId }) => {
     const petImages = {
@@ -18,6 +19,35 @@ const petAccessoryImages = {
   4: { dog: "./images/pets/dog_skin_4.png", cat: "./images/pets/cat_skin_4.png", parrot: "./images/pets/parrot_skin_4.png" },
   5: { dog: "./images/pets/dog_skin_5.png", cat: "./images/pets/cat_skin_5.png", parrot: "./images/pets/parrot_skin_5.png" },
   6: { dog: "./images/pets/dog_skin_6.png", cat: "./images/pets/cat_skin_6.png", parrot: "./images/pets/parrot_skin_6.png" },
+};
+
+  const renderPie = (value, icon) => {
+  const data = [
+    { name: "filled", value },
+    { name: "empty", value: 100 - value },
+  ];
+  const COLORS = ["#607053", "#BFE0A5"];
+
+  return (
+    <div className="need-pie-wrapper">
+      <PieChart width={50} height={50}>
+        <Pie
+          data={data}
+          innerRadius={18}
+          outerRadius={25}
+          dataKey="value"
+          startAngle={90}
+          endAngle={-270}
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index]} />
+          ))}
+        </Pie>
+      </PieChart>
+      <div className="need-icon-centered">{icon}</div>
+      {/* <div className="need-value">{value}%</div> */}
+    </div>
+  );
 };
 
 const baseImage = petImages[pet.type];
@@ -47,12 +77,9 @@ if (pet.active_accessory_id && petAccessoryImages[pet.active_accessory_id]) {
         </div>
 
         <div className="pet-actions">
-          <p>😴 Сон: {pet.sleep_level}</p>
-          <button className="pet-action-btn green" onClick={onSleep}>💤 Спатки</button>
-          <p>🧼 Чистота: {pet.clean_level}</p>
-          <button className="pet-action-btn blue" onClick={onClean}>🛁 Помити</button>
-          <p>🍗 Голод: {pet.hunger_level}</p>
-          <button className="pet-action-btn yellow" onClick={onFeed}>🍽 Погодувати</button>
+          <button className="pet-action-btn green" onClick={onSleep}>{renderPie(pet.sleep_level, "💤")} Спатки</button>
+          <button className="pet-action-btn blue" onClick={onClean}> {renderPie(pet.clean_level, "🛁")}  Помити</button>
+          <button className="pet-action-btn yellow" onClick={onFeed}> {renderPie(pet.hunger_level, "🍽")} Погодувати</button>
         </div>
       </div>
     );

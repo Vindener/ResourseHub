@@ -46,7 +46,9 @@ const PetSummaryCard = () => {
     { name: "filled", value },
     { name: "empty", value: 100 - value },
   ];
-  const COLORS = ["#333", "#D2D2D2"];
+  const COLORS = ["#607053", "#BFE0A5"];
+
+  console.log("Запит на", `http://localhost:5000/api/pets/${user?.id}`);
 
   return (
     <div className="need-pie-wrapper">
@@ -65,9 +67,11 @@ const PetSummaryCard = () => {
         </Pie>
       </PieChart>
       <div className="need-icon-centered">{icon}</div>
+      {/* <div className="need-value">{value}%</div> */}
     </div>
   );
 };
+
 
 
   if (error) {
@@ -83,19 +87,32 @@ const PetSummaryCard = () => {
 
   if (!pet) return null;
 
-  const { name, sleep, clean, food, type, active_skin } = pet;
+  const { name, sleep_level, clean_level, hunger_level, type, active_skin } = pet;
 
   // усередині компонента
-  const s = Math.max(0, Math.min(100, Number(sleep)));
-  const c = Math.max(0, Math.min(100, Number(clean)));
-  const f = Math.max(0, Math.min(100, Number(food)));
+  const toSafeValue = (val) => {
+    const num = Number(val);
+    return isNaN(num) ? 0 : Math.max(0, Math.min(100, num));
+  };
+
+  const s = toSafeValue(sleep_level);
+  const c = toSafeValue(clean_level);
+  const f = toSafeValue(hunger_level);
+
   const values = [s, c, f];
 
-  const avg = values.reduce((sum, v) => sum + v, 0) / values.length;
-
+  const avg = Math.round(values.reduce((sum, v) => sum + v, 0) / values.length);
   let happiness = "Щастя";
-  if (avg < 50) happiness = "Сум";
-  else if (avg >= 50) happiness = "Нормально";
+  if (avg < 34) happiness = "Сумний";
+  else if (avg < 67) happiness = "Нормально";
+  else happiness = "Щасливий";
+
+  const getMoodColor = (value) => {
+  if (value < 34) return "#d9534f";      // червоний
+  if (value < 67) return "#f0ad4e";      // жовтий
+  return "#5cb85c";                      // зелений
+};
+
 
   const petImage =
     active_skin && petAccessoryImages[active_skin]?.[type]
@@ -106,7 +123,11 @@ const PetSummaryCard = () => {
   <div className="pet-summary-card">
     <div className="pet-info">
       <p className="pet-name">{name}</p>
-      <span className="pet-mood">{happiness}</span>
+      <div className="pet-mood-bar">
+          <div className="pet-mood-fill" style={{ width: `${avg}%`, backgroundColor: getMoodColor(avg) }}>
+            {happiness} ({avg}%)
+          </div>
+        </div>
       <div className="pet-needs">
         {renderPie(s, "💤")}
         {renderPie(c, "🛁")}
