@@ -125,7 +125,7 @@ const AccessoryShop = ({ userId, onClose }) => {
                   onClick={() => handleActivate(a.id)}
                 >
                    {a.is_active ? (
-                    <img src="/images/tamagotchi/buyed.png" alt="coins" className="coin-price" />
+                    <img  src="/images/tamagotchi/buyed.png" alt="coins" className="coin-price" />
                   ) : (
                     "➕"
                   )}
