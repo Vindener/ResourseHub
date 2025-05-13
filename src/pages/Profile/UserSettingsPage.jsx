@@ -91,7 +91,7 @@ const UserSettings = () => {
       <div className="settings-content">
 
         <div className="avatar-selection">
-          <p className="avatar-subtitle">Аватар профілю</p>
+          <h2 className="avatar-title">Аватар профілю</h2>
           <div className="avatar-list">
             {avatarList.map((a) => (
               <div
@@ -114,13 +114,13 @@ const UserSettings = () => {
 
 
         <div className="avatar-selection">
-          <p className="avatar-subtitle">Нік користувача</p>
+          <h3 className="avatar-subtitle">Нік користувача</h3>
           <input name="username" value={form.username} onChange={handleChange} />
 
-          <p className="avatar-subtitle">E-MAIL</p>
+          <h3 className="avatar-subtitle">E-MAIL</h3>
           <input name="email" value={form.email} onChange={handleChange} />
 
-          <p className="avatar-subtitle">Змінити пароль</p>
+          <h3 className="avatar-subtitle">Змінити пароль</h3>
           <div className="password-field">
             <input
               type={showPassword ? "text" : "password"}
@@ -133,10 +133,15 @@ const UserSettings = () => {
               onClick={() => setShowPassword((prev) => !prev)}
               role="button"
             >
-              {showPassword ? "🙈" : "👁️"}
+             <img
+                src={showPassword ? "/images/avatars/eye_closed.png" : "/images/avatars/eye_open.png"}
+                alt={showPassword ? "Hide password" : "Show password"}
+                className="eye-icon"
+              />
+
             </span>
           </div>
-          <p className="avatar-subtitle">Мінімальний пароль 5 символів</p>
+          <h3 className="avatar-subtitle">Мінімальний пароль 5 символів</h3>
           <button className="save-button" onClick={handleSave}>
             Зберегти зміни
           </button>
@@ -147,7 +152,7 @@ const UserSettings = () => {
         </button>
 
         <p className="info">
-          При знаходженні помилок у роботі сервісу напишіть лист на{" "}
+          При знаходженні помилок у роботі сервісу напишіть лист на e-mail  <br/>
           <b>globaann@gmail.com</b> і в найкоротший час баг буде виправлено.
         </p>
     </div>

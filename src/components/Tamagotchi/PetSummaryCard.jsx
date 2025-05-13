@@ -60,9 +60,10 @@ const PetSummaryCard = () => {
           dataKey="value"
           startAngle={90}
           endAngle={-270}
+          cx="50%" cy="50%"
         >
           {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index]} />
+            <Cell key={`cell-${index}`}  fill={COLORS[index]} />
           ))}
         </Pie>
       </PieChart>
@@ -114,10 +115,12 @@ const PetSummaryCard = () => {
 };
 
 
-  const petImage =
-    active_skin && petAccessoryImages[active_skin]?.[type]
-      ? petAccessoryImages[active_skin][type]
-      : petImages[type];
+    const baseImage = petImages[pet.type];
+    let finalImage = baseImage;
+
+    if (pet.active_accessory_id && petAccessoryImages[pet.active_accessory_id]) {
+      finalImage = petAccessoryImages[pet.active_accessory_id][pet.type] || baseImage;
+    }
 
   return (
   <div className="pet-summary-card">
@@ -134,7 +137,7 @@ const PetSummaryCard = () => {
         {renderPie(f, "🍽")}
       </div>
     </div>
-    <img src={petImage} alt="pet" className="pet-image" />
+    <img src={finalImage} alt="pet" className="pet-image" />
   </div>
 );
 

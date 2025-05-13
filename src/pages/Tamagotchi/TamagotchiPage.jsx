@@ -24,13 +24,13 @@ const TamagotchiPage = () => {
     const res = await axios.get(`http://localhost:5000/api/pets/${userId}`);
     if (res.data && res.data.name) {
       setPet(res.data);
-      setStep("main"); // 👉 показує головний екран
+      setStep("main"); // показує головний екран
     } else {
-      setStep("intro"); // 👉 показує вступ
+      setStep("intro"); // показує вступ
     }
   } catch (error) {
     console.log("🐾 Помилка завантаження улюбленця:", error);
-    setStep("intro"); // 👉 якщо помилка — все одно показує вступ
+    setStep("intro"); // якщо помилка — все одно показує вступ
   }
 };
 

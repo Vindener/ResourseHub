@@ -3,15 +3,17 @@
     align-items: center;
     background-color: #fefcf5;
     padding: 8px 14px;
-    border-radius: 999px;
+    border-radius: 30px;
     font-weight: 600;
     font-size: 16px;
     color: #6c5624;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
     gap: 8px;
+    width: 200px;
+    justify-content: center;
 }
 
 .coin-icon {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
 }

@@ -1,132 +1,154 @@
 .shop-container {
     padding: 20px;
-}
-
-.shop-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-    text-align: center;
-}
-
-.shop-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 20px;
-    justify-items: center;
-}
-
-.item {
-    background: #fff;
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.item.selected {
-    border: 2px solid #776935;
-}
-
-.item img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 10px;
-}
-
-.item p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #444;
-}
-
-.item button,.pet-button {
-    margin-top: 8px;
-    background-color: #f6d868;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.item button:hover,.pet-button:hover {
-    background-color: #e0c35d;
-}
-
-.buy-button {
-    margin-top: 30px;
-    padding: 12px 20px;
-    background-color: #f6d868;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    display: block;
-    width: 100%;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.buy-button:hover {
-    background-color: #e0c35d;
-}
-
-.item .price {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-
-.item.owned .price {
-    visibility: hidden;
-}
-
-.item.selected {
-    outline: 3px solid #4CAF50;
-    border-radius: 10px;
-}
-
-.pet-choices {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-}
-
-.pet-choice {
-    text-align: center;
-    padding: 10px;
-    border-radius: 10px;
-    background: #fdf7e9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 120px;
-}
-
-.pet-icon {
-    width: 80px;
-    height: auto;
-}
-
-.active-pet {
-    border: 2px solid #8bc34a;
-}
-
-.pet-choice button {
-    margin-top: 8px;
+    border-radius: 20px;
+    width: 90%;
+    min-height: 800px;
+    margin: auto;
+    background: url("../../../public/images/tamagotchi/newPage.png") no-repeat center center / cover;
 }
 
 .shop-header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
+    align-items: center;
+    margin-left: 10px;
+    gap: 10px;
+    padding: 10px 24px;
 }
 
+.back-button {
+    background: #ffffff;
+    border: none;
+    font-size: 18px;
+    border-radius: 18px;
+    padding: 6px 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    justify-content: center;
+}
+
+.item {
+    background: #FAF4E4;
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 140px;
+    position: relative;
+    justify-content: center;
+}
+.item:hover{
+    border: 5px solid #555555;
+}
+.buy-block{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    height: 100%;
+}
+
+.item.selected {
+    border: 3px solid #a2df85;
+}
+
+.item-image {
+    width: 172px;
+    height: 172px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.buy-button, .buy-price, .active-button,.pet-button {
+    background-color: #D8D3C5;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    height: 45%;
+    padding: 4px;
+    min-width: 80px;
+}
+.buy-price{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    cursor: default;
+}
+.buy-price span{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    gap: 12px;
+    padding: 4px;
+}
+
+.item button:disabled,
+.active-button {
+    background-color: #cceab3;
+    color: #333;
+    cursor: default;
+}
+.coin-price{
+    width: 32px;
+    height: 32px;
+}
+
+.pet-choices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.pet-choice {
+    background: #FAF4E4;
+    border-radius: 16px;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 140px;
+    justify-content: center;
+    gap:24px;
+}
+
+.pet-choice:hover {
+    border: 5px solid #555555;
+}
+
+.pet-choice.active-pet {
+    border: 3px solid #a2df85;
+}
+
+.pet-button:disabled {
+    background-color: #cceab3;
+    cursor: default; 
+}
+
+.shop-title {
+    text-align: center;
+    font-size: 22px;
+    color: #555555;
+    background: #FFFAED;
+    padding: 6px 12px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}

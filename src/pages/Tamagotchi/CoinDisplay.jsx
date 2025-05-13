@@ -49,7 +49,8 @@ const CoinDisplay = ({ userId, triggerReload }) => {
 
   return (
     <div className="coin-display-container">
-      💰 <span>{coins} монет</span>
+      <img src={"/images/tamagotchi/coins.png"} alt="coins" className="coin-icon" />
+       <span>{coins} монет</span>
     </div>
   );
 };

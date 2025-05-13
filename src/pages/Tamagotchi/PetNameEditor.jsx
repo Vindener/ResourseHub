@@ -15,23 +15,23 @@ const PetNameEditor = ({ name, isEditable = false, onSave }) => {
   };
 
   return (
-    <div className="pet-name-editor">
+    <div className="pet-name-container">
       {!editing ? (
         <>
-          <span className="name-display">{name}</span>
+          <span className="pet-name-editor name-display">{name}</span>
           {isEditable && (
-            <button className="edit-btn" onClick={() => setEditing(true)}>✏️</button>
+            <button className="pet-name-editor edit-btn" onClick={() => setEditing(true)}>✏️</button>
           )}
         </>
       ) : (
         <>
           <input
-            className="name-input"
+            className="name-input pet-name-editor"
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             maxLength={16}
           />
-          <button className="save-btn" onClick={handleSave}>✅</button>
+          <button className="pet-name-editor save-btn" onClick={handleSave}>✅</button>
         </>
       )}
     </div>

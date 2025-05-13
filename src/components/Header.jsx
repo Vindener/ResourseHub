@@ -19,7 +19,7 @@ const pageData = {
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const pageTitle = pageData[location.pathname]?.title || "RESOURSeHub";
+  const pageTitle = pageData[location.pathname]?.title || "Resoursehub";
 
   const role = localStorage.getItem("role");
   const [user, setUser] = useState(null);

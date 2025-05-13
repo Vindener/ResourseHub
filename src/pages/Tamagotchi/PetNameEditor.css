@@ -1,9 +1,23 @@
+.pet-name-container{
+    display: flex;
+    align-items: center;
+    background-color: #fefcf5;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #6c5624;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    gap: 8px;
+    width: 465px;
+    justify-content: center;
+}
 .pet-name-editor {
     display: flex;
     align-items: center;
     background-color: #c7d7f3;
     border-radius: 20px;
-    padding: 6px 12px;
+    padding: 8px 12px;
     font-weight: 600;
     font-size: 16px;
     color: #24418a;
@@ -18,18 +32,21 @@
 .edit-btn,
 .save-btn {
     background-color: transparent;
+    background-color: #c7d7f3;
     border: none;
     font-size: 18px;
     margin-left: 8px;
     cursor: pointer;
+    height: 32px;
+    width: auto;
 }
 
 .name-input {
     border: none;
-    border-radius: 12px;
-    padding: 4px 10px;
+    border-radius: 20px;
+    padding: 8px 10px;
     font-size: 16px;
-    outline: none;
     flex-grow: 1;
-    background-color: white;
+    background-color: #c7d7f3;
+    text-align: center;
 }

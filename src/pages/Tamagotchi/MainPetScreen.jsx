@@ -63,10 +63,12 @@ if (pet.active_accessory_id && petAccessoryImages[pet.active_accessory_id]) {
           <CoinDisplay userId={userId} triggerReload={false} />
           <PetNameEditor
             name={pet.name}
-            isEditable={true} // або завжди true, або передай як prop
+            isEditable={true} 
             onSave={onEditName}
           />
-          <button className="shop-button" onClick={onShop}>🛍</button>
+          <button className="shop-button" onClick={onShop}>
+            <img src={"/images/tamagotchi/shop.png"} alt="coins" className="coin-icon" />
+          </button>
         </div>
 
         <div className="tama-box">

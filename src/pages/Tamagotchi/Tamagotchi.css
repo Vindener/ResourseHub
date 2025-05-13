@@ -25,27 +25,23 @@
     background: url("../../../public/images/tamagotchi/newPage.png") no-repeat center center / cover;
     /* background-color: rgba(255, 255, 255, 0.3); */
     /* Накладення кольору */
-    border-radius: 20px;
     /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
     padding: 30px;
-    width: 85%;
+    width: 90%;
     text-align: center;
     font-size: 18px;
-    color: white;
     font-weight: bold;
 }
 .tama-box{
-    background: url("../../../public/images/tamagotchi/tama-block.png") no-repeat center center / cover;
-    border: 2px solid var(--color-text-block-3);
-    border-radius: 30px;    
+    background: url("../../../public/images/tamagotchi/tama-block.png") no-repeat center center / cover;  
     margin-top: 26px;
     margin-bottom: 26px;
     padding: 30px;
-    width: 85%;
+    width: 90%;
     text-align: center;
-    font-size: 18px;
-    color: white;
-    font-weight: bold;
+    height: 440px;
+    display: flex;
+    justify-content: center;
 }
 .tama-intro-box ul {
     list-style: none;
@@ -115,16 +111,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 25px;
 }
 
 .pet-topbar {
     display: flex;
-    justify-content: space-between;
     width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
     align-items: center;
+    justify-content: center;
+    gap: 32px;
 }
 
 .coin-display {
@@ -151,14 +145,25 @@
 }
 
 .shop-button {
-    background: none;
+    display: flex;
+    align-items: center;
+    background-color: #fefcf5;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    color: #6c5624;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+    gap: 8px;
+    width: 140px;
+    justify-content: center;
     border: none;
-    font-size: 24px;
     cursor: pointer;
 }
 
 .pet-image-area {
-    margin: 20px 0;
+    margin: 120px 0px;
+    padding-left: 70px;
 }
 
 .main-pet-image {
@@ -167,7 +172,10 @@
 
 .pet-actions {
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
 }
 
 .pet-action-btn {
@@ -180,7 +188,8 @@
     color: #444;
     display: flex;
     align-items: center;
-    gap:20px
+    gap:20px;
+    width: 25%;
 }
 
 .green {
